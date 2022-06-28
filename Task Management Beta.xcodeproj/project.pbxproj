@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2EAA73D3286B303C005FF479 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAA73D2286B303C005FF479 /* OnBoardingView.swift */; };
 		DC5F14392860EA0500857EB2 /* Task_Management_BetaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5F14382860EA0500857EB2 /* Task_Management_BetaApp.swift */; };
 		DC5F143B2860EA0500857EB2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5F143A2860EA0500857EB2 /* ContentView.swift */; };
 		DC5F143D2860EA0800857EB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC5F143C2860EA0800857EB2 /* Assets.xcassets */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2EAA73D2286B303C005FF479 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
 		DC5F14352860EA0500857EB2 /* Task Management Beta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Task Management Beta.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC5F14382860EA0500857EB2 /* Task_Management_BetaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task_Management_BetaApp.swift; sourceTree = "<group>"; };
 		DC5F143A2860EA0500857EB2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				DCEF4E652862F2D5002E4853 /* DynamicFilteredView.swift */,
 				DC9755E62869544F00F27506 /* DetailTaskView.swift */,
 				DCDBA46D286992C400D2736F /* Collapsible.swift */,
+				2EAA73D2286B303C005FF479 /* OnBoardingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				DC5F14452860EA0800857EB2 /* Task_Management_Beta.xcdatamodeld in Sources */,
 				DCEF4E662862F2D5002E4853 /* DynamicFilteredView.swift in Sources */,
 				DC5F146A2860ECEA00857EB2 /* Home.swift in Sources */,
+				2EAA73D3286B303C005FF479 /* OnBoardingView.swift in Sources */,
 				DC9755E72869544F00F27506 /* DetailTaskView.swift in Sources */,
 				DC5F146F2860F70100857EB2 /* AddNewTask.swift in Sources */,
 				DC5F143B2860EA0500857EB2 /* ContentView.swift in Sources */,
