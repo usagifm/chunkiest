@@ -13,7 +13,7 @@ struct Home: View {
     
     // Mark : Matched Geometry Namespace
     @Namespace var animation
-    
+    // hai ganteng
     
     
     // Mark: Fetching Task
