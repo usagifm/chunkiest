@@ -13,9 +13,25 @@ struct ContentView: View {
 
     var body: some View {
         NavigationView{
-            
-            Home().navigationTitle("Task Manager")
+    
+            TabView{
+                
+        
+            Home().navigationTitle("Chunkiest")
                 .navigationBarTitleDisplayMode(.inline)
+                .tabItem{
+                     Image(systemName: "house")
+                    Text("Home")
+                }
+                
+              StatisticView()
+                    .tabItem{
+                         Image(systemName: "chart.line.uptrend.xyaxis")
+                        Text("Statistic")
+                    }
+                    
+
+            }
             
         }
   

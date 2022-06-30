@@ -77,7 +77,7 @@ struct DynamicFilteredView<Content: View,T>: View where T: NSManagedObject {
     
     
     var body: some View {
-       
+        
         Group{
             if request.isEmpty{
                 Text("No Task Found!!")

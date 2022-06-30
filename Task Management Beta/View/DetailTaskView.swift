@@ -8,21 +8,31 @@
 import SwiftUI
 
 struct DetailTaskView: View {
+    
+    //    @State var editMode: EditMode = .inactive //<- Declare the @State var for editMode
+    @State var editMode: EditMode = .active
+    @State var isEditing = true
+    
     @Environment(\.managedObjectContext) private var viewContext
     
     @EnvironmentObject var taskModel: TaskViewModel
     // MARK : All Environment Values in one variable !
     @Environment(\.self) var env
     
+    @Namespace var animation
+    
     @State var subtaskName: String = ""
     
     @State var subtasks: [Subtask] = []
     
-//    subtasks = taskModel.detailTask?.subtasks?.sortedArray(using: [NSSortDescriptor(key: "order", ascending: true)]) as? [Subtask]
-//
+    //    subtasks = taskModel.detailTask?.subtasks?.sortedArray(using: [NSSortDescriptor(key: "order", ascending: true)]) as? [Subtask]
+    //
+    
+    
     
     var body: some View {
-        NavigationView {
+        //        NavigationView {
+        
         VStack{
             Text("Detail Task")
                 .font(.title3.bold())
@@ -30,6 +40,9 @@ struct DetailTaskView: View {
                 .frame(maxWidth: .infinity)
                 .overlay(alignment: .leading){
                     Button {
+                        taskModel.resetTaskDataForDetail()
+                        //                        
+                        //                        taskModel.loadTasks(currentTab: taskModel.currentTabEnum)
                         env.dismiss()
                     }label: {
                         Image(systemName: "arrow.left")
@@ -39,7 +52,7 @@ struct DetailTaskView: View {
                 }
             VStack(alignment: .leading, spacing: 10){
                 HStack{
-                    Text(taskModel.taskType ?? "")
+                    Text(taskModel.detailTask?.type ?? "")
                         .font(.callout)
                         .padding(.vertical,5)
                         .padding(.horizontal)
@@ -47,48 +60,61 @@ struct DetailTaskView: View {
                             Capsule()
                                 .fill(.white.opacity(0.4))
                         }
-                
+                    
                     Spacer()
                     
+                    Button{
+                        taskModel.editTask = taskModel.detailTask
+                        taskModel.openEditTask = true
+                        taskModel.setupTask()
+                    }label: {
+                        Image(systemName: "square.and.pencil")
+                            .foregroundColor(.black
+                            )
+                    }
+                    
+                    
+                    
+                    
                     // Mark: Edit Button only for non completed task
-//                    if !task.isCompleted && taskModel.currentTab != "Failed"{
-//                        Button{
-//                            taskModel.editTask = task
-//                            taskModel.openEditTask = true
-//                            taskModel.setupTask()
-//                        }label: {
-//                            Image(systemName: "square.and.pencil")
-//                                .foregroundColor(.black
-//                                )
-//                        }
-//
-//                    }
+                    //                    if !task.isCompleted && taskModel.currentTab != "Failed"{
+                    //                        Button{
+                    //                            taskModel.editTask = task
+                    //                            taskModel.openEditTask = true
+                    //                            taskModel.setupTask()
+                    //                        }label: {
+                    //                            Image(systemName: "square.and.pencil")
+                    //                                .foregroundColor(.black
+                    //                                )
+                    //                        }
+                    //
+                    //                    }
                 }
                 
-                Text(taskModel.taskTitle ?? "")
+                Text(taskModel.detailTask?.title ?? "")
                     .font(.title2.bold())
                     .foregroundColor(.black)
-//                    .padding(.vertical,10).onTapGesture {
-//                        print("Pressed Bro !")
-//                        taskModel.detailTask = task
-//                        taskModel.openDetailTask = true
-//                        taskModel.setupTask()
-//                    }
-//
-                Text(taskModel.taskDescription ?? "")
+                //                    .padding(.vertical,10).onTapGesture {
+                //                        print("Pressed Bro !")
+                //                        taskModel.detailTask = task
+                //                        taskModel.openDetailTask = true
+                //                        taskModel.setupTask()
+                //                    }
+                //
+                Text(taskModel.detailTask?.taskDescription ?? "")
                     .font(.callout)
                     .foregroundColor(.black)
                 
                 HStack(alignment: .bottom, spacing: 0){
                     VStack(alignment: .leading, spacing: 10){
                         Label {
-                            Text((taskModel.taskDeadline ?? Date()).formatted(date: .long, time: .omitted))
+                            Text((taskModel.detailTask?.deadline ?? Date()).formatted(date: .long, time: .omitted))
                         } icon: {
                             Image(systemName: "calendar")
                         }.font(.caption)
                         
                         Label {
-                            Text((taskModel.taskDeadline ?? Date()).formatted(date: .omitted, time: .shortened))
+                            Text((taskModel.detailTask?.deadline ?? Date()).formatted(date: .omitted, time: .shortened))
                         } icon: {
                             Image(systemName: "clock")
                             
@@ -97,92 +123,138 @@ struct DetailTaskView: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     
-//                    if !taskModel.isCompleted{
-//                        Button{
-//                            // MArk : Updating Core DAta
-//                            task.isCompleted.toggle()
-//
-//                            try? env.managedObjectContext.save()
-//                        } label: {
-//                            Circle()
-//                                .strokeBorder(.black, lineWidth: 1.5)
-//                                .frame(width: 25, height: 25)
-//                                .contentShape(Circle())
-//                        }
-//                    }
+                    //                    if !taskModel.isCompleted{
+                    //                        Button{
+                    //                            // MArk : Updating Core DAta
+                    //                            task.isCompleted.toggle()
+                    //
+                    //                            try? env.managedObjectContext.save()
+                    //                        } label: {
+                    //                            Circle()
+                    //                                .strokeBorder(.black, lineWidth: 1.5)
+                    //                                .frame(width: 25, height: 25)
+                    //                                .contentShape(Circle())
+                    //                        }
+                    //                    }
                 }
             }.padding()
                 .frame(maxWidth: .infinity)
                 .background{
+                    
                     RoundedRectangle(cornerRadius: 12, style: .continuous)
-                        .fill(Color(taskModel.taskColor ?? "Yellow"))
+                    
+                        .fill(
+                            LinearGradient(gradient: Gradient(colors: [Color("WhiteCardDetail"),   Color(taskModel.detailTask?.color ?? "Yellow")]), startPoint: .leading, endPoint: .trailing)
+                            
+                        )
+                    
+                    //                        .background(
+                    //                               LinearGradient(gradient: Gradient(colors: [.white, .red, .black]), startPoint: .leading, endPoint: .trailing)
+                    //                           )
                 }
             
-            
-            
-            VStack(alignment: .leading, spacing: 12){
-                Text("Subtask Name")
-                    .font(.caption)
-                    .foregroundColor(.gray)
-                
-                TextField("", text: $taskModel.subTaskName)
-                    .frame(maxWidth: .infinity)
-                    .padding(.top,10)
-                
-                Button{
+            HStack(alignment: .bottom, spacing: 0){
+                VStack(alignment: .leading, spacing: 10){
                     
-                    if  taskModel.addSubtask(context: env.managedObjectContext, task: taskModel.detailTask!){
-                        
-                        taskModel.detailTask = taskModel.detailTask
-                        
-                    }
-                    
-                 
-                    
-                }label: {
-                    Text("Add Subtask")
-                        .foregroundColor(.white)
-                        .frame(height: 55)
-                        .frame(maxWidth: .infinity)
-                        .background(Color.blue.cornerRadius(10))
-                }
-            }
-            
-           
-            
-//            if let subtasksNew = taskModel.detailTask?.subtasks?.sortedArray(using: [NSSortDescriptor(key: "order", ascending: true)]) as? [Subtask]{
-//                subtasks.append(contentsOf: subtasksNew)
-            
-            if let subtasks = taskModel.detailTask?.subtasks?.sortedArray(using: [NSSortDescriptor(key: "order", ascending: true)]) as? [Subtask]{
-
-                
-                    VStack{
-                        List{
-
-                            ForEach(subtasks) { subtask in
-                                SubtaskRowInDetailTaskView(subtask: subtask)
-                            }.onMove(perform: moveSubtask)
-                            .onDelete(perform: deleteSubtask)
+                    HStack(alignment: .bottom, spacing: 0){
+                        VStack(alignment: .leading, spacing: 10){
+                            
+                            let subtaskCompleted = taskModel.subtaskArray.filter() {
+                                let isComplete = $0.isComplete == true
+                                
+                                return isComplete
+                            }
+                            
+                            Text("Subtask \("(\(String(subtaskCompleted.count))/\(String(taskModel.subtaskArray.count)))" ?? "0/0")").font(.headline).bold()
                             
                         }
-                      
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        
                         
                     }
-                
-                    
                 }
-
+            }.padding(10)
+                .padding(.bottom,20)
+            
+            //            if let subtasksNew = taskModel.detailTask?.subtasks?.sortedArray(using: [NSSortDescriptor(key: "order", ascending: true)]) as? [Subtask]{
+            //                subtasks.append(contentsOf: subtasksNew)
+            
+            //            if let subtasks = taskModel.detailTask?.subtasks?.sortedArray(using: [NSSortDescriptor(key: "order", ascending: true)]) as? [Subtask]{
+            
+            
+            
+            List{
+                
+                ForEach(taskModel.subtaskArray) { subtask in
+                    SubtaskRowInDetailTaskView(subtask: subtask)
+                }.onMove(perform: moveSubtask)
+                    .onDelete(perform: deleteSubtask)
+                //                            Button{
+                //
+                //                                if  taskModel.addSubtask(context: env.managedObjectContext, task: taskModel.detailTask!){
+                //
+                //                                    taskModel.detailTask = taskModel.detailTask
+                //                                    taskModel.loadSubtasks(task: taskModel.detailTask!)
+                //
+                //                                }
+                //
+                //
+                //
+                //                            }label: {
+                Text("Add Subtask...")
+                    .foregroundColor(.red)
+                
+                    .onTapGesture {
+                        
+                        if  taskModel.addSubtask(context: env.managedObjectContext, task: taskModel.detailTask!){
+                            
+                            taskModel.detailTask = taskModel.detailTask
+                            taskModel.loadSubtasks(task: taskModel.detailTask!)
+                            
+                        }
+                        
+                        
+                    }
+                //                            }
+            }.frame(maxWidth: .infinity)
+                .onAppear(perform: {
+                    
+                    taskModel.loadSubtasks(task: taskModel.detailTask!)
+                    
+                })
+                .listStyle(.plain)
+                .environment(\.editMode, $editMode)
+            
+            //                            Button("Edit", action:{
+            //                            isEditing.toggle()
+            //                            editMode = isEditing ? .active : .inactive
+            //                            })
+            
+            
+            //                }
+            
+            
+            
+            
+            //        }
+            //                    .toolbar {
+            //                        EditButton()
+            //                    }
+            
             
         }
-                    .toolbar {
-                        EditButton()
-                    }
-            
-            
-        }      .frame(maxHeight: .infinity, alignment: .top)
-            .padding()
-            
-      
+        .onDisappear(){
+            taskModel.loadTasks(currentTab: taskModel.currentTabEnum)
+        }
+        .frame(maxHeight: .infinity, alignment: .top)
+        .padding()
+        .fullScreenCover(isPresented: $taskModel.openEditTask){
+            taskModel.resetTaskDataForDetail()
+        } content: {
+            EditDetailTaskView()
+                .environmentObject(taskModel)
+        }
+        
     }
     
     
@@ -214,17 +286,42 @@ struct DetailTaskView: View {
         }
         do {
             try viewContext.save()
+            taskModel.loadSubtasks(task: taskModel.detailTask!)
         }catch{
             print(error.localizedDescription)
         }
     }
+    
+    
     private func deleteSubtask(at offset:IndexSet){
         withAnimation{
             offset.map{ taskModel.subtaskArray[$0] }.forEach(viewContext.delete)
             do {
                 try viewContext.save()
+                taskModel.loadSubtasks(task: taskModel.detailTask!)
             }catch{
                 print(error.localizedDescription)
+            }
+        }
+    }
+    
+    struct SubtaskRowInDetailTaskView: View {
+        @ObservedObject var subtask: Subtask   // !! @ObserveObject is the key!!!
+        
+        @EnvironmentObject var taskModel: TaskViewModel
+        // MARK : All Environment Values in one variable !
+        @Environment(\.self) var env
+        
+        var body: some View {
+            HStack{
+                //        Text(subtask.name ?? "")
+                TextField("Subtask Name", text: $subtask.name.toUnwrapped(defaultValue: ""))
+                    .onChange(of: subtask.name, perform: { _ in
+                        taskModel.editSubtaskName(context: env.managedObjectContext, subtask: subtask)
+                        //                        taskModel.loadTasks(currentTab: taskModel.currentTabEnum)
+                        print("Berhasil edit subtask")
+                    })
+                
             }
         }
     }
@@ -233,20 +330,22 @@ struct DetailTaskView: View {
 }
 
 
-    
-struct SubtaskRowInDetailTaskView: View {
-    @ObservedObject var subtask: Subtask   // !! @ObserveObject is the key!!!
 
-    var body: some View {
-        HStack{
-        Text(subtask.name ?? "")
-        Text("Order No : \(subtask.order)").font(.caption)
-        }
-    }
-}
 
 struct DetailTaskView_Previews: PreviewProvider {
     static var previews: some View {
         DetailTaskView().environmentObject(TaskViewModel())
+    }
+}
+extension EditMode {
+    
+    mutating func toggle() {
+        self = self == .active ? .inactive : .active
+    }
+}
+
+extension Binding {
+    func toUnwrapped<T>(defaultValue: T) -> Binding<T> where Value == Optional<T>  {
+        Binding<T>(get: { self.wrappedValue ?? defaultValue }, set: { self.wrappedValue = $0 })
     }
 }

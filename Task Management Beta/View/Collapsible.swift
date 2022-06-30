@@ -23,7 +23,7 @@ struct Collapsible<Content: View>: View {
             .buttonStyle(PlainButtonStyle())
             
             VStack {
-             
+                
                 self.content()
                 
             }
@@ -31,7 +31,7 @@ struct Collapsible<Content: View>: View {
             .clipped()
             .transition(.slide)
             .animation(_:.interactiveSpring())
-    
+            
         }
     }
 }

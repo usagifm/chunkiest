@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC02EDF6286D8DEE0086A1F1 /* EditDetailTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC02EDF5286D8DEE0086A1F1 /* EditDetailTaskView.swift */; };
+		DC02EDF8286E12DE0086A1F1 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC02EDF7286E12DE0086A1F1 /* test.swift */; };
+		DC02EDFA286E1DAE0086A1F1 /* StatisticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC02EDF9286E1DAE0086A1F1 /* StatisticView.swift */; };
 		DC5F14392860EA0500857EB2 /* Task_Management_BetaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5F14382860EA0500857EB2 /* Task_Management_BetaApp.swift */; };
 		DC5F143B2860EA0500857EB2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5F143A2860EA0500857EB2 /* ContentView.swift */; };
 		DC5F143D2860EA0800857EB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC5F143C2860EA0800857EB2 /* Assets.xcassets */; };
@@ -42,6 +45,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DC02EDF5286D8DEE0086A1F1 /* EditDetailTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDetailTaskView.swift; sourceTree = "<group>"; };
+		DC02EDF7286E12DE0086A1F1 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
+		DC02EDF9286E1DAE0086A1F1 /* StatisticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticView.swift; sourceTree = "<group>"; };
 		DC5F14352860EA0500857EB2 /* Task Management Beta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Task Management Beta.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC5F14382860EA0500857EB2 /* Task_Management_BetaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task_Management_BetaApp.swift; sourceTree = "<group>"; };
 		DC5F143A2860EA0500857EB2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -112,8 +118,8 @@
 			children = (
 				DC5F14682860EC4200857EB2 /* ViewModel */,
 				DC5F14672860EC2500857EB2 /* View */,
-				DC5F14382860EA0500857EB2 /* Task_Management_BetaApp.swift */,
 				DC5F143A2860EA0500857EB2 /* ContentView.swift */,
+				DC5F14382860EA0500857EB2 /* Task_Management_BetaApp.swift */,
 				DC5F143C2860EA0800857EB2 /* Assets.xcassets */,
 				DC5F14412860EA0800857EB2 /* Persistence.swift */,
 				DC5F14432860EA0800857EB2 /* Task_Management_Beta.xcdatamodeld */,
@@ -151,10 +157,13 @@
 			isa = PBXGroup;
 			children = (
 				DC5F14692860ECEA00857EB2 /* Home.swift */,
-				DC5F146E2860F70100857EB2 /* AddNewTask.swift */,
+				DC02EDF5286D8DEE0086A1F1 /* EditDetailTaskView.swift */,
 				DCEF4E652862F2D5002E4853 /* DynamicFilteredView.swift */,
 				DC9755E62869544F00F27506 /* DetailTaskView.swift */,
+				DC5F146E2860F70100857EB2 /* AddNewTask.swift */,
 				DCDBA46D286992C400D2736F /* Collapsible.swift */,
+				DC02EDF7286E12DE0086A1F1 /* test.swift */,
+				DC02EDF9286E1DAE0086A1F1 /* StatisticView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -298,12 +307,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC5F14422860EA0800857EB2 /* Persistence.swift in Sources */,
+				DC02EDF8286E12DE0086A1F1 /* test.swift in Sources */,
 				DC5F146D2860F0BD00857EB2 /* TaskViewModel.swift in Sources */,
 				DC5F14452860EA0800857EB2 /* Task_Management_Beta.xcdatamodeld in Sources */,
 				DCEF4E662862F2D5002E4853 /* DynamicFilteredView.swift in Sources */,
 				DC5F146A2860ECEA00857EB2 /* Home.swift in Sources */,
 				DC9755E72869544F00F27506 /* DetailTaskView.swift in Sources */,
 				DC5F146F2860F70100857EB2 /* AddNewTask.swift in Sources */,
+				DC02EDFA286E1DAE0086A1F1 /* StatisticView.swift in Sources */,
+				DC02EDF6286D8DEE0086A1F1 /* EditDetailTaskView.swift in Sources */,
 				DC5F143B2860EA0500857EB2 /* ContentView.swift in Sources */,
 				DCDBA46E286992C400D2736F /* Collapsible.swift in Sources */,
 				DC5F14392860EA0500857EB2 /* Task_Management_BetaApp.swift in Sources */,
@@ -473,7 +485,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -503,7 +515,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

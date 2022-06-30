@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AddNewTask: View {
+struct EditDetailTaskView: View {
     @EnvironmentObject var taskModel: TaskViewModel
     // MARK : All Environment Values in one variable !
     @Environment(\.self) var env
@@ -30,8 +30,10 @@ struct AddNewTask: View {
                 .overlay(alignment: .trailing){
                     Button {
                         if let editTask = taskModel.editTask{
+                            taskModel.openDetailTask = false
                             env.managedObjectContext.delete(editTask)
                             try? env.managedObjectContext.save()
+                            env.dismiss()
                             env.dismiss()
                         }
                     } label: {
@@ -172,11 +174,8 @@ struct AddNewTask: View {
                     
                     // Mark : IF success closing the View
                     if  taskModel.addTask(context: env.managedObjectContext) {
-                        
-                        taskModel.loadTasks(currentTab: taskModel.currentTabEnum)
                         env.dismiss()
                     }
-                    
                 }label: {
                     Text("Save Task")
                         .font(.callout)
@@ -227,7 +226,7 @@ struct AddNewTask: View {
     }
 }
 
-struct AddNewTask_Previews: PreviewProvider {
+struct EditDetailTaskView_Previews: PreviewProvider {
     static var previews: some View {
         AddNewTask().environmentObject(TaskViewModel())
     }
