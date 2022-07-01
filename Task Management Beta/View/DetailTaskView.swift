@@ -36,7 +36,7 @@ struct DetailTaskView: View {
         VStack{
             Text("Detail Task")
                 .font(.title3.bold())
-                .foregroundColor(.black)
+//                .foregroundColor(.black)
                 .frame(maxWidth: .infinity)
                 .overlay(alignment: .leading){
                     Button {
@@ -45,20 +45,36 @@ struct DetailTaskView: View {
                         //                        taskModel.loadTasks(currentTab: taskModel.currentTabEnum)
                         env.dismiss()
                     }label: {
-                        Image(systemName: "arrow.left")
+                        Image(systemName: "chevron.left")
                             .font(.title3)
-                            .foregroundColor(.black)
+                        Text("Home")
+//                            .foregroundColor(.black)
                     }
+                }.overlay(alignment: .trailing){
+                    Button {
+                        if let detailTask = taskModel.detailTask{
+                            taskModel.openDetailTask = false
+                            env.managedObjectContext.delete(detailTask)
+                            try? env.managedObjectContext.save()
+                            env.dismiss()
+                        }
+                    } label: {
+                        Image(systemName: "trash")
+                            .font(.title3)
+                            .foregroundColor(.red)
+                    }.opacity(taskModel.detailTask == nil ? 0 : 1)
                 }
+            
             VStack(alignment: .leading, spacing: 10){
                 HStack{
                     Text(taskModel.detailTask?.type ?? "")
+                        .foregroundColor(.white)
                         .font(.callout)
                         .padding(.vertical,5)
                         .padding(.horizontal)
                         .background{
                             Capsule()
-                                .fill(.white.opacity(0.4))
+                                .fill(.black.opacity(0.8))
                         }
                     
                     Spacer()
@@ -108,15 +124,15 @@ struct DetailTaskView: View {
                 HStack(alignment: .bottom, spacing: 0){
                     VStack(alignment: .leading, spacing: 10){
                         Label {
-                            Text((taskModel.detailTask?.deadline ?? Date()).formatted(date: .long, time: .omitted))
+                            Text((taskModel.detailTask?.deadline ?? Date()).formatted(date: .long, time: .omitted)).foregroundColor(.black)
                         } icon: {
-                            Image(systemName: "calendar")
+                            Image(systemName: "calendar").foregroundColor(.black)
                         }.font(.caption)
                         
                         Label {
-                            Text((taskModel.detailTask?.deadline ?? Date()).formatted(date: .omitted, time: .shortened))
+                            Text((taskModel.detailTask?.deadline ?? Date()).formatted(date: .omitted, time: .shortened)).foregroundColor(.black)
                         } icon: {
-                            Image(systemName: "clock")
+                            Image(systemName: "clock").foregroundColor(.black)
                             
                         }
                         .font(.caption)

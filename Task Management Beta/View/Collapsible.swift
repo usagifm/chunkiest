@@ -11,10 +11,13 @@ struct Collapsible<Content: View>: View {
             Button(
                 action: { self.collapsed.toggle() },
                 label: {
-                    HStack {
+                    HStack() {
                         self.label()
                         Spacer()
-                        Image(systemName: self.collapsed ? "chevron.down" : "chevron.up")
+                        Image(systemName: self.collapsed ? "chevron.down.circle.fill" : "chevron.up.circle.fill")
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                            .foregroundColor(Color.gray)
                     }
                     .padding(.bottom, 1)
                     .background(Color.white.opacity(0.01))

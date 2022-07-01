@@ -22,20 +22,63 @@ struct Home: View {
     
     
     var body: some View {
+        VStack{
+            VStack{
+                VStack{
+                    
+        
+                    HStack{
+                        VStack(alignment: .leading){
+                        Text("Welcome !")
+                                .font(.callout)
+                            Text("Here's Update Today.")
+                            .font(.title2)
+                            .bold()
+                           
+                            
+//                        Text("Here's Update Today.")
+//                            .font(.title2)
+////                            .bold()
+
+                        }
+
+                        Spacer()
+                    Button {
+                        taskModel.openAddTask.toggle()
+                    } label: {
+                        Label{
+
+                        } icon: {
+                            Image(systemName: "plus")
+                        }.foregroundColor(.white)
+                            .padding(.vertical)
+                            .padding(.horizontal)
+                            .background(
+                                  RoundedRectangle(cornerRadius: 25)
+                                      .fill(Color("BlueAccent"))
+                                      .shadow(color: .blue, radius: 2, x: 0, y: 3)
+                          )
+                    }
+                }
+                    
+            }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.bottom, 5)
+                .padding(.top,10)
+//                .padding(.vertical)
+                
+      
+//
+            }.padding(.horizontal,20)
+                .padding(.top,30)
+            
+        
         ScrollView(.vertical, showsIndicators: false){
             VStack{
-                VStack(alignment: .leading){
-                    Text("Welcome !")
-                        .font(.callout)
-                    Text("Here's Update Today.")
-                        .font(.title2.bold())
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.vertical)
-                
+           
                 
                 CustomSegmentedBar()
-                    .padding(.top, 5)
+//                    .padding(.top, 5)
                 
                 // MARK : Task View
                 TaskView().padding(.top,20)
@@ -49,40 +92,40 @@ struct Home: View {
             
             taskModel.loadTasks(currentTab: taskModel.currentTabEnum)
             
-            print(" FUCKING ON APPEAR TOT")
+            print("Appear Sayang")
         })
-        .overlay(alignment: .bottom){
-            // MARK : Add Button
-            Button {
-                taskModel.openAddTask.toggle()
-            } label: {
-                Label{
-                    Text("Task")
-                        .font(.callout)
-                        .fontWeight(.semibold)
-                } icon: {
-                    Image(systemName: "plus.app.fill")
-                }.foregroundColor(.white)
-                    .padding(.vertical,12)
-                    .padding(.horizontal)
-                    .background(.black, in: Capsule())
-            }
-            // Mark : Linear Gradient BG
-            .padding(.top,10)
-            .frame(maxWidth: .infinity)
+//        .overlay(alignment: .bottom){
+//            // MARK : Add Button
+////            Button {
+////                taskModel.openAddTask.toggle()
+////            } label: {
+////                Label{
+////                    Text("Task")
+////                        .font(.callout)
+////                        .fontWeight(.semibold)
+////                } icon: {
+////                    Image(systemName: "plus.app.fill")
+////                }.foregroundColor(.white)
+////                    .padding(.vertical,12)
+////                    .padding(.horizontal)
+////                    .background(.black, in: Capsule())
+////            }
+////            // Mark : Linear Gradient BG
+////            .padding(.top,10)
+////            .frame(maxWidth: .infinity)
+////
+////            .background{
+////                LinearGradient(colors: [
+////                    .white.opacity(0.05),
+////                    .white.opacity(0.4),
+////                    .white.opacity(0.7),
+////                    .white
+////                ], startPoint: .top, endPoint: .bottom)
+////                .ignoresSafeArea()
+////            }
+////
 //
-//            .background{
-//                LinearGradient(colors: [
-//                    .white.opacity(0.05),
-//                    .white.opacity(0.4),
-//                    .white.opacity(0.7),
-//                    .white
-//                ], startPoint: .top, endPoint: .bottom)
-//                .ignoresSafeArea()
-//            }
-//
-            
-        }
+//        }
         .fullScreenCover(isPresented: $taskModel.openAddTask){
             taskModel.resetTaskData()
         } content: {
@@ -96,6 +139,7 @@ struct Home: View {
                 .environmentObject(taskModel)
         }
         
+        }
         //        .fullScreenCover(isPresented: $taskModel.openEditTask){
         //            AddNewTask()
         //                .environmentObject(taskModel)
@@ -118,9 +162,24 @@ struct Home: View {
             
             //            DynamicFilteredView(currentTab: taskModel.currentTab){
             //                (task: Task) in
-            ForEach(taskModel.taskArray,id: \.self){ task in
-                TaskRowView(task: task)
-            }
+            
+            Group{
+                if taskModel.taskArray.isEmpty{
+                    Text("No Task Found")
+                        .font(.system(size: 16))
+                        .fontWeight(.light)
+                        .offset(y: 100)
+                }else{
+                    ForEach(taskModel.taskArray,id: \.self){ task in
+                        TaskRowView(task: task)
+                    }
+                        
+                    }
+                    
+                }
+            
+
+   
             //            }
         }
     }
@@ -156,13 +215,52 @@ struct Home: View {
             //                }
             //            }
             
-            HStack(alignment: .bottom, spacing: 0){
+            HStack(alignment: .top, spacing: 0){
+                
                 VStack(alignment: .leading, spacing: 5){
+                    
+                    HStack{
+                        
+                        //            if !task.isCompleted{
+                        Button{
+                            // MArk : Updating Core DAta
+                            task.isCompleted.toggle()
+                            taskModel.loadTasks(currentTab: taskModel.currentTabEnum)
+                            
+                            try? env.managedObjectContext.save()
+                        } label: {
+                            
+                            if task.isCompleted == true {
+                                
+                                Image(systemName: "checkmark.circle.fill")
+                                    .resizable()
+                                    .foregroundColor(.blue)
+                                    .frame(width: 25, height: 25)
+                                    .contentShape(Circle())
+                                    .padding(.top, 5)
+                                
+                            }
+                            if task.isCompleted == false {
+                                
+                                Image(systemName: "circle")
+                                    .resizable()
+                                    .foregroundColor(.gray)
+                                    .frame(width: 25, height: 25)
+                                    .contentShape(Circle())
+                                    .padding(.top, 5)
+                            }
+                            
+                            
+                        }
+                        
                     Text(task.title ?? "")
                         .font(.title2.bold())
                         .padding(.top,5)
+                        
+                    }
                     
                     
+                HStack(alignment: .top){
                     Text(task.taskDescription ?? "")
                         .font(.callout)
                         .onTapGesture {
@@ -171,6 +269,7 @@ struct Home: View {
                             //                    taskModel.openDetailTask = true
                             //                    taskModel.setupTask()
                         }
+                    }
                     
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -178,11 +277,11 @@ struct Home: View {
                 //                NavigationLink(destination: DetailTaskView().environmentObject(taskModel)) {
                 //                    Text("Trade View Link")
                 //                }.simultaneousGesture(TapGesture().onEnded{
-                //                    
+                //
                 //                    taskModel.detailTask = task
                 //                    taskModel.openDetailTask = true
                 //                    taskModel.setupTask()
-                //       
+                //
                 //                })
                 Button{
                     // MArk : Updating Core DAta
@@ -199,12 +298,12 @@ struct Home: View {
                 } label: {
                     
                     
-                    Image(systemName: "chevron.right")
+                    Image(systemName: "arrow.right.circle.fill")
                         .resizable()
-                        .foregroundColor(.black)
-                        .frame(width: 10, height: 15)
+                        .frame(width: 20, height: 20)
                     //                            .contentShape(Circle())
                         .padding(.bottom, 30)
+//                        .padding(.trailing, 3)
                     
                     
                     
@@ -319,38 +418,7 @@ struct Home: View {
                         
                     }
                     
-                    
-                    //            if !task.isCompleted{
-                    Button{
-                        // MArk : Updating Core DAta
-                        task.isCompleted.toggle()
-                        taskModel.loadTasks(currentTab: taskModel.currentTabEnum)
-                        
-                        try? env.managedObjectContext.save()
-                    } label: {
-                        
-                        if task.isCompleted == true {
-                            
-                            Image(systemName: "checkmark.circle.fill")
-                                .resizable()
-                                .foregroundColor(.blue)
-                                .frame(width: 25, height: 25)
-                                .contentShape(Circle())
-                                .padding(.bottom, 5)
-                            
-                        }
-                        if task.isCompleted == false {
-                            
-                            Image(systemName: "circle")
-                                .resizable()
-                                .foregroundColor(.gray)
-                                .frame(width: 25, height: 25)
-                                .contentShape(Circle())
-                                .padding(.bottom, 5)
-                        }
-                        
-                        
-                    }
+                  
                     //            }
                 }
                 
@@ -519,7 +587,7 @@ struct Home: View {
                         if taskModel.currentTabEnum != tab{
                             
                             Capsule()
-                                .stroke(Color("BlueAccent"),lineWidth: 2)
+                                .strokeBorder(Color("BlueAccent"),lineWidth: 2)
                             
                             
                         }

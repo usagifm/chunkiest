@@ -12,13 +12,12 @@ struct ContentView: View {
 
 
     var body: some View {
-        NavigationView{
+//        NavigationView{
     
             TabView{
                 
         
-            Home().navigationTitle("Chunkiest")
-                .navigationBarTitleDisplayMode(.inline)
+            Home()
                 .tabItem{
                      Image(systemName: "house")
                     Text("Home")
@@ -33,7 +32,7 @@ struct ContentView: View {
 
             }
             
-        }
+//        }
   
     }
 

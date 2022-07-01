@@ -14,31 +14,37 @@ struct AddNewTask: View {
     @Namespace var animation
     var body: some View {
         VStack{
-            Text("Edit Task")
+            Text("Add New Task")
                 .font(.title3.bold())
-                .foregroundColor(.black)
+//                .foregroundColor(.black)
                 .frame(maxWidth: .infinity)
                 .overlay(alignment: .leading){
                     Button {
                         env.dismiss()
                     }label: {
-                        Image(systemName: "arrow.left")
+                        Image(systemName: "xmark")
                             .font(.title3)
-                            .foregroundColor(.black)
+//                            .foregroundColor(.black)
                     }
                 }
                 .overlay(alignment: .trailing){
                     Button {
-                        if let editTask = taskModel.editTask{
-                            env.managedObjectContext.delete(editTask)
-                            try? env.managedObjectContext.save()
+                        // Mark : IF success closing the View
+                        if  taskModel.addTask(context: env.managedObjectContext) {
+                            
+                            taskModel.loadTasks(currentTab: taskModel.currentTabEnum)
                             env.dismiss()
                         }
                     } label: {
-                        Image(systemName: "trash")
-                            .font(.title3)
-                            .foregroundColor(.red)
-                    }.opacity(taskModel.editTask == nil ? 0 : 1)
+                        Text("Save")
+//                        Image(systemName: "trash")
+//                            .font(.title3)
+//                            .foregroundColor(.red)
+                   
+                    }
+                            .disabled(taskModel.taskTitle == "")
+                        .opacity(taskModel.taskTitle == "" ? 0.6 : 1)
+
                 }
             
             
@@ -143,7 +149,7 @@ struct AddNewTask: View {
                             .background{
                                 if taskModel.taskType == type{
                                     Capsule()
-                                        .fill(.black)
+                                        .fill( Color("BlueAccent"))
                                         .matchedGeometryEffect(id: "TYPE", in: animation)
                                     
                                 }else {
@@ -168,32 +174,32 @@ struct AddNewTask: View {
                 
                 // Save Button
                 
-                Button{
-                    
-                    // Mark : IF success closing the View
-                    if  taskModel.addTask(context: env.managedObjectContext) {
-                        
-                        taskModel.loadTasks(currentTab: taskModel.currentTabEnum)
-                        env.dismiss()
-                    }
-                    
-                }label: {
-                    Text("Save Task")
-                        .font(.callout)
-                        .fontWeight(.semibold)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical,12)
-                        .foregroundColor(.white)
-                        .background{
-                            
-                            Capsule()
-                                .fill(.black)
-                        }
-                    
-                }.frame(maxHeight: .infinity, alignment: .bottom)
-                    .padding(.bottom,10)
-                    .disabled(taskModel.taskTitle == "")
-                    .opacity(taskModel.taskTitle == "" ? 0.6 : 1)
+//                Button{
+//
+//                    // Mark : IF success closing the View
+//                    if  taskModel.addTask(context: env.managedObjectContext) {
+//
+//                        taskModel.loadTasks(currentTab: taskModel.currentTabEnum)
+//                        env.dismiss()
+//                    }
+//
+//                }label: {
+//                    Text("Save Task")
+//                        .font(.callout)
+//                        .fontWeight(.semibold)
+//                        .frame(maxWidth: .infinity)
+//                        .padding(.vertical,12)
+//                        .foregroundColor(.white)
+//                        .background{
+//
+//                            Capsule()
+//                                .fill(.black)
+//                        }
+//
+//                }.frame(maxHeight: .infinity, alignment: .bottom)
+//                    .padding(.bottom,10)
+//                    .disabled(taskModel.taskTitle == "")
+//                    .opacity(taskModel.taskTitle == "" ? 0.6 : 1)
             }
             
         }
