@@ -56,7 +56,12 @@ class TaskViewModel: ObservableObject {
     
     private let persistenceController = PersistenceController.shared
     
+    
     @Published var subtaskArray: [Subtask] = []
+    
+    @Published var subtaskArrayToAdd: [Subtask] = []
+    
+    
     @Published var taskArray: [Task] = []
     //    @StateObject var taskAnjing = TaskController()
     
@@ -105,6 +110,14 @@ class TaskViewModel: ObservableObject {
         task.type = taskType
         task.taskDescription = taskDescription
         task.isCompleted = false
+        
+        
+        if subtaskArrayToAdd.count != 0 {
+            for subtask in subtaskArrayToAdd{
+                subtask.task = task
+            }
+            
+        }
         
         if let _ = try? context.save(){
             
@@ -394,6 +407,8 @@ class TaskViewModel: ObservableObject {
         
     }
     
+    
+    
     func addSubtask(context: NSManagedObjectContext, task: Task)-> Bool{
         
         
@@ -423,6 +438,40 @@ class TaskViewModel: ObservableObject {
         
         
     }
+    
+    
+    func addSubtaskForAdd(context: NSManagedObjectContext){
+        
+        
+        var newSubtask: Subtask!
+        
+        
+            subtaskArrayToAdd = subtaskArrayToAdd.sorted(by: { $0.order < $1.order })
+        
+            newSubtask = Subtask(context: context)
+            newSubtask.id = UUID()
+            newSubtask.name = subTaskName
+            newSubtask.isComplete = false
+            newSubtask.order = (subtaskArrayToAdd.last?.order ?? 0) + 1
+        
+            subtaskArrayToAdd.append(newSubtask)
+//        print("Nilai last order : \(subtasks?.last?.order)")
+//        newSubtask.task = task
+        
+        
+        
+//        if let _ = try? context.save(){
+//
+//            print("Berhasil Menambah Data Subtask!")
+//            return true
+//
+//        }
+//
+//        return false
+        
+        
+    }
+    
     
     func editSubtaskName(context: NSManagedObjectContext, subtask: Subtask)-> Bool{
         

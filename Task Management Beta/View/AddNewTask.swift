@@ -9,6 +9,10 @@ import SwiftUI
 
 struct AddNewTask: View {
     @EnvironmentObject var taskModel: TaskViewModel
+    
+    @State var editMode: EditMode = .active
+    @State var isEditing = true
+    
     // MARK : All Environment Values in one variable !
     @Environment(\.self) var env
     @Namespace var animation
@@ -20,6 +24,7 @@ struct AddNewTask: View {
                 .frame(maxWidth: .infinity)
                 .overlay(alignment: .leading){
                     Button {
+                        taskModel.subtaskArrayToAdd = []
                         env.dismiss()
                     }label: {
                         Image(systemName: "xmark")
@@ -31,7 +36,7 @@ struct AddNewTask: View {
                     Button {
                         // Mark : IF success closing the View
                         if  taskModel.addTask(context: env.managedObjectContext) {
-                            
+                            taskModel.subtaskArrayToAdd = []
                             taskModel.loadTasks(currentTab: taskModel.currentTabEnum)
                             env.dismiss()
                         }
@@ -168,10 +173,29 @@ struct AddNewTask: View {
                     }
                 }.padding(.top,8)
                 
-                
-                
                 Divider()
                 
+                
+                HStack(alignment: .bottom, spacing: 0){
+                    VStack(alignment: .leading, spacing: 10){
+                        
+                        HStack(alignment: .bottom, spacing: 0){
+                            VStack(alignment: .leading, spacing: 10){
+                            
+                                
+                                Text("Subtask").font(.headline).bold()
+                                
+                            }
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            
+                            
+                        }
+                    }
+                }.padding(10)
+//                    .padding(.bottom,20)
+                
+                
+//
                 // Save Button
                 
 //                Button{
@@ -200,7 +224,61 @@ struct AddNewTask: View {
 //                    .padding(.bottom,10)
 //                    .disabled(taskModel.taskTitle == "")
 //                    .opacity(taskModel.taskTitle == "" ? 0.6 : 1)
+                
+                
+                
+                List{
+                    
+                    ForEach(taskModel.subtaskArrayToAdd) { subtask in
+                        SubtaskRowInDetailTaskView(subtask: subtask)
+//                        HStack{
+//                            //        Text(subtask.name ?? "")
+//                            TextField("Subtask Name", text: $subtask.name)
+//                                .onChange(of: subtask.name, perform: { _ in
+//                                    taskModel.editSubtaskName(context: env.managedObjectContext, subtask: subtask)
+//                                    //                        taskModel.loadTasks(currentTab: taskModel.currentTabEnum)
+//                                    print("Berhasil edit subtask")
+//                                })
+//
+//                        }
+                    }.onMove(perform: moveSubtask)
+                        .onDelete(perform: deleteSubtask)
+                    //                            Button{
+                    //
+                    //                                if  taskModel.addSubtask(context: env.managedObjectContext, task: taskModel.detailTask!){
+                    //
+                    //                                    taskModel.detailTask = taskModel.detailTask
+                    //                                    taskModel.loadSubtasks(task: taskModel.detailTask!)
+                    //
+                    //                                }
+                    //
+                    //
+                    //
+                    //                            }label: {
+                    Text("Add Subtask...")
+                        .foregroundColor(.red)
+                    
+                        .onTapGesture {
+                            
+                          taskModel.addSubtaskForAdd(context: env.managedObjectContext)
+                            
+                        }
+                    //                            }
+                }.frame(maxWidth: .infinity)
+//                    .onAppear(perform: {
+//
+//                        taskModel.loadSubtasks(task: taskModel.detailTask!)
+//
+//                    })
+                    .listStyle(.plain)
+                    .environment(\.editMode, $editMode)
+                
+                
+                
             }
+            
+            
+            
             
         }
         .frame(maxHeight: .infinity, alignment: .top)
@@ -231,6 +309,78 @@ struct AddNewTask: View {
         }
         
     }
+    
+    
+    struct SubtaskRowInDetailTaskView: View {
+        @ObservedObject var subtask: Subtask   // !! @ObserveObject is the key!!!
+        
+        @EnvironmentObject var taskModel: TaskViewModel
+        // MARK : All Environment Values in one variable !
+        @Environment(\.self) var env
+        
+        var body: some View {
+            HStack{
+                //        Text(subtask.name ?? "")
+                TextField("Subtask Name", text: $subtask.name.toUnwrapped(defaultValue: ""))
+//                Text("Order : \(subtask.order)")
+                
+//                    .onChange(of: subtask.name, perform: { _ in
+//                        taskModel.editSubtaskName(context: env.managedObjectContext, subtask: subtask)
+//                        //                        taskModel.loadTasks(currentTab: taskModel.currentTabEnum)
+//                        print("Berhasil edit subtask")
+//                    })
+                
+            }
+        }
+    }
+    
+    
+    
+    private func moveSubtask(at sets:IndexSet,destination:Int){
+        let subtaskToMove = sets.first!
+        
+        if subtaskToMove < destination {
+            var startIndex = subtaskToMove + 1
+            let endIndex = destination - 1
+            var startOrder = taskModel.subtaskArrayToAdd[subtaskToMove].order
+            while startIndex <= endIndex{
+                taskModel.subtaskArrayToAdd[startIndex].order = startOrder
+                startOrder = startOrder + 1
+                startIndex = startIndex + 1
+            }
+            taskModel.subtaskArrayToAdd[subtaskToMove].order = startOrder
+        }
+        else if destination < subtaskToMove {
+            var startIndex = destination
+            let endIndex = subtaskToMove - 1
+            var startOrder = taskModel.subtaskArrayToAdd[destination].order + 1
+            let newOrder = taskModel.subtaskArrayToAdd[destination].order
+            while startIndex <= endIndex {
+                taskModel.subtaskArrayToAdd[startIndex].order = startOrder
+                startOrder = startOrder + 1
+                startIndex = startIndex + 1
+            }
+            taskModel.subtaskArrayToAdd[subtaskToMove].order = newOrder
+        }
+        do {
+            taskModel.subtaskArrayToAdd = taskModel.subtaskArrayToAdd.sorted(by: { $0.order < $1.order })
+        }catch{
+            print(error.localizedDescription)
+        }
+    }
+    
+    
+    private func deleteSubtask(at offset:IndexSet){
+        withAnimation{
+            taskModel.subtaskArrayToAdd.remove(atOffsets: offset)
+            do {
+                print("\(taskModel.subtaskArrayToAdd[0].name) WKOWKOKWOKWKWOKWOKKWO")
+            }catch{
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
 }
 
 struct AddNewTask_Previews: PreviewProvider {
@@ -238,3 +388,10 @@ struct AddNewTask_Previews: PreviewProvider {
         AddNewTask().environmentObject(TaskViewModel())
     }
 }
+
+//extension EditMode {
+//    
+//    mutating func toggle() {
+//        self = self == .active ? .inactive : .active
+//    }
+//}

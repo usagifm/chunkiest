@@ -12,6 +12,7 @@ struct DetailTaskView: View {
     //    @State var editMode: EditMode = .inactive //<- Declare the @State var for editMode
     @State var editMode: EditMode = .active
     @State var isEditing = true
+    @State private var showDeleteAlert = false
     
     @Environment(\.managedObjectContext) private var viewContext
     
@@ -52,17 +53,32 @@ struct DetailTaskView: View {
                     }
                 }.overlay(alignment: .trailing){
                     Button {
-                        if let detailTask = taskModel.detailTask{
-                            taskModel.openDetailTask = false
-                            env.managedObjectContext.delete(detailTask)
-                            try? env.managedObjectContext.save()
-                            env.dismiss()
-                        }
+                        
+                        showDeleteAlert.toggle()
+               
                     } label: {
                         Image(systemName: "trash")
                             .font(.title3)
                             .foregroundColor(.red)
                     }.opacity(taskModel.detailTask == nil ? 0 : 1)
+                    
+                    .alert("Delete Task ?", isPresented: $showDeleteAlert, actions: {
+                            Button("Cancel", role: .cancel){
+                                
+                            }
+                            Button("Delete", role: .destructive){
+                                if let detailTask = taskModel.detailTask{
+                                    taskModel.openDetailTask = false
+                                    env.managedObjectContext.delete(detailTask)
+                                    try? env.managedObjectContext.save()
+                                    env.dismiss()
+                                }
+                            }
+                            }, message: {
+                              Text("Erased Tasks cannot be recovered")
+                            })
+                    
+    
                 }
             
             VStack(alignment: .leading, spacing: 10){

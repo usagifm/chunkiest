@@ -6,9 +6,12 @@
 //
 
 import SwiftUI
+import CoreHaptics
 
 struct Home: View {
     @StateObject var taskModel: TaskViewModel = .init()
+    
+    @State private var engine: CHHapticEngine?
     
     // Mark : Matched Geometry Namespace
     @Namespace var animation
@@ -67,11 +70,13 @@ struct Home: View {
                 .padding(.top,10)
 //                .padding(.vertical)
                 
-      
+            
 //
             }.padding(.horizontal,20)
                 .padding(.top,30)
-            
+//
+//
+//            Divider()
         
         ScrollView(.vertical, showsIndicators: false){
             VStack{
@@ -96,34 +101,34 @@ struct Home: View {
         })
 //        .overlay(alignment: .bottom){
 //            // MARK : Add Button
-////            Button {
-////                taskModel.openAddTask.toggle()
-////            } label: {
-////                Label{
-////                    Text("Task")
-////                        .font(.callout)
-////                        .fontWeight(.semibold)
-////                } icon: {
-////                    Image(systemName: "plus.app.fill")
-////                }.foregroundColor(.white)
-////                    .padding(.vertical,12)
-////                    .padding(.horizontal)
-////                    .background(.black, in: Capsule())
-////            }
-////            // Mark : Linear Gradient BG
-////            .padding(.top,10)
-////            .frame(maxWidth: .infinity)
-////
-////            .background{
-////                LinearGradient(colors: [
-////                    .white.opacity(0.05),
-////                    .white.opacity(0.4),
-////                    .white.opacity(0.7),
-////                    .white
-////                ], startPoint: .top, endPoint: .bottom)
-////                .ignoresSafeArea()
-////            }
-////
+//            Button {
+//                taskModel.openAddTask.toggle()
+//            } label: {
+//                Label{
+//                    Text("Task")
+//                        .font(.callout)
+//                        .fontWeight(.semibold)
+//                } icon: {
+//                    Image(systemName: "plus.app.fill")
+//                }.foregroundColor(.white)
+//                    .padding(.vertical,12)
+//                    .padding(.horizontal)
+//                    .background(.black, in: Capsule())
+//            }
+//            // Mark : Linear Gradient BG
+//            .padding(.top,10)
+//            .frame(maxWidth: .infinity)
+//
+//            .background{
+//                LinearGradient(colors: [
+//                    .white.opacity(0.05),
+//                    .white.opacity(0.4),
+//                    .white.opacity(0.7),
+//                    .white
+//                ], startPoint: .top, endPoint: .bottom)
+//                .ignoresSafeArea()
+//            }
+//
 //
 //        }
         .fullScreenCover(isPresented: $taskModel.openAddTask){
@@ -224,11 +229,13 @@ struct Home: View {
                         //            if !task.isCompleted{
                         Button{
                             // MArk : Updating Core DAta
+                            playSoundOnce(sound: "pop", type: "mp3")
                             task.isCompleted.toggle()
                             taskModel.loadTasks(currentTab: taskModel.currentTabEnum)
-                            
+                            complexSuccess()
                             try? env.managedObjectContext.save()
-                        } label: {
+                        }
+                    label: {
                             
                             if task.isCompleted == true {
                                 
@@ -446,6 +453,8 @@ struct Home: View {
                                             
                                             try? env.managedObjectContext.save()
                                             
+                                          
+                                            
                                         }
                                         
                                         
@@ -606,6 +615,37 @@ struct Home: View {
     }
     
     
+    func prepareHaptics() {
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
+
+        do {
+            engine = try CHHapticEngine()
+            try engine?.start()
+        } catch {
+            print("There was an error creating the engine: \(error.localizedDescription)")
+        }
+    }
+    
+    func complexSuccess() {
+        // make sure that the device supports haptics
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
+        var events = [CHHapticEvent]()
+
+        // create one intense, sharp tap
+        let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1)
+        let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 1)
+        let event = CHHapticEvent(eventType: .hapticTransient, parameters: [intensity, sharpness], relativeTime: 0)
+        events.append(event)
+
+        // convert those events into a pattern and play it immediately
+        do {
+            let pattern = try CHHapticPattern(events: events, parameters: [])
+            let player = try engine?.makePlayer(with: pattern)
+            try player?.start(atTime: 0)
+        } catch {
+            print("Failed to play pattern: \(error.localizedDescription).")
+        }
+    }
     
 }
 
