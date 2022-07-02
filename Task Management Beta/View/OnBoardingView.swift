@@ -90,14 +90,6 @@ struct Onboard: View {
                     .padding(.horizontal)
                     .background(LinearGradient(gradient: Gradient(colors: [.blue, .cyan]), startPoint: .leading, endPoint: .trailing))
                     .cornerRadius(30)
-//                    .background(
-//                        RoundedRectangle(cornerRadius: 10)
-//                            .fill(LinearGradient(gradient: Gradient(colors: [.blue, .cyan]), startPoint: .leading, endPoint: .trailing))
-//                            .overlay(
-//                                RoundedRectangle(cornerRadius: 10)
-//                                    .stroke(Color.white,lineWidth: 1)
-//                            )
-//                    )
                 })
                 Button {
                 } label: {
