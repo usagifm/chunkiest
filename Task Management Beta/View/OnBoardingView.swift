@@ -78,7 +78,21 @@ struct Onboard: View {
 //                .padding(.top)
              
             VStack(spacing:15) {
-                Button(action: {}, label: {
+                Button(action: {
+                    
+                    if (CurrentIndex < 2){
+                    CurrentIndex = CurrentIndex + 1
+                    } else {
+                        
+                        withAnimation {
+                            UserDefaults.standard.set(true, forKey: "isStart")
+                        }
+                        // bikin ga bakal muncul lagi onboardinnya
+                        print("index exceeded")
+                        
+                    }
+                    
+                }, label: {
                     HStack{
                          
                         Text("CONTINUE")
@@ -91,12 +105,18 @@ struct Onboard: View {
                     .background(LinearGradient(gradient: Gradient(colors: [.blue, .cyan]), startPoint: .leading, endPoint: .trailing))
                     .cornerRadius(30)
                 })
-                Button {
-                } label: {
-                    Text("Skip")
-                        .bold()
-                        .foregroundColor(.gray)
-                }
+                
+                    Button {
+                        withAnimation {
+                            UserDefaults.standard.set(true, forKey: "isStart")
+                        }
+                        // bikin ga bakal muncul lagi onboardinnya
+                    } label: {
+                        Text("Skip")
+                            .bold()
+                            .foregroundColor(.gray)
+                        
+                    }.opacity(CurrentIndex == 2 ? 0 : 1)
             }
             .padding(.bottom, 50)
             Spacer()

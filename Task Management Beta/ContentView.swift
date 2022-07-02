@@ -10,10 +10,12 @@ import CoreData
 
 struct ContentView: View {
 
-
-    var body: some View {
-//        NavigationView{
+    @AppStorage("isStart") private var isStart: Bool = false
     
+    var body: some View {
+        
+        if isStart {
+            
             TabView{
                 
         
@@ -28,9 +30,14 @@ struct ContentView: View {
                          Image(systemName: "chart.line.uptrend.xyaxis")
                         Text("Statistic")
                     }
-                    
-
             }
+            
+        } else {
+            OnBoardingView()
+        }
+//        NavigationView{
+    
+
             
 //        }
   
