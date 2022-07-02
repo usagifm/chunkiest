@@ -18,8 +18,8 @@ struct Onboard: View {
      
     @State var CurrentIndex : Int = 0
     @State var ArrayOfImage : [String] = ["pic0", "pic1", "pic2"]
-    @State var ArrayOfTitle : [String] = ["Welcome To Chunkist", "Break Your Task Down", "Track Progress"]
-    @State var ArrayOfSubtitle : [String] = ["The secret of getting ahead is getting started.", "implify your task by making it’s size manageable.", "Check your task progress"]
+    @State var ArrayOfTitle : [String] = ["Welcome To Chunkist", "Take Baby Steps", "Track Progress"]
+    @State var ArrayOfSubtitle : [String] = ["“The secret of getting ahead is start where you are, with what you’ve got.”", "Simplify your task by breaking it down", "Be aware on how your journeys have been"]
      
     var body: some View {
         VStack {
@@ -85,7 +85,7 @@ struct Onboard: View {
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity, alignment: .center)
                     }
-                    .padding(.vertical,13)
+                    .padding(.vertical,20)
                     .padding(.horizontal)
                     .background(LinearGradient(gradient: Gradient(colors: [.blue, .cyan]), startPoint: .leading, endPoint: .trailing))
                     .cornerRadius(20)
