@@ -46,7 +46,7 @@ struct Onboard: View {
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .padding(.horizontal,10)
-                                    .frame(width: 150, height: 150, alignment: .center)
+                                    .frame(width: 200, height: 200, alignment: .center)
                                  
                                 Text(ArrayOfTitle[index])
                                     .font(.title)
@@ -88,7 +88,7 @@ struct Onboard: View {
                     .padding(.vertical,20)
                     .padding(.horizontal)
                     .background(LinearGradient(gradient: Gradient(colors: [.blue, .cyan]), startPoint: .leading, endPoint: .trailing))
-                    .cornerRadius(20)
+                    .cornerRadius(30)
 //                    .background(
 //                        RoundedRectangle(cornerRadius: 10)
 //                            .fill(LinearGradient(gradient: Gradient(colors: [.blue, .cyan]), startPoint: .leading, endPoint: .trailing))
@@ -99,7 +99,6 @@ struct Onboard: View {
 //                    )
                 })
                 Button {
-                    
                 } label: {
                     Text("Skip")
                         .bold()
