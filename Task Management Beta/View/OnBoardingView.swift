@@ -56,6 +56,7 @@ struct Onboard: View {
                                     .padding()
                                  
                                 Text(ArrayOfSubtitle[index])
+                                    .multilineTextAlignment(.center)
                                     .font(.system(size: 16, weight: .bold))
                                     .foregroundColor(.gray)
                                     .padding(.horizontal)
@@ -105,7 +106,7 @@ struct Onboard: View {
                         .foregroundColor(.gray)
                 }
             }
-            .padding()
+            .padding(.bottom, 50)
             Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
