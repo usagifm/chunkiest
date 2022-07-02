@@ -80,10 +80,10 @@ struct Onboard: View {
                 Button(action: {}, label: {
                     HStack{
                          
-                        Text("Continue")
+                        Text("CONTINUE")
                             .fontWeight(.bold)
                             .foregroundColor(.white)
-                            .frame(maxWidth: .infinity, alignment: .center)
+                            .frame(width: 250, height: 25, alignment: .center)
                     }
                     .padding(.vertical,20)
                     .padding(.horizontal)
