@@ -57,7 +57,7 @@ struct Onboard: View {
                                  
                                 Text(ArrayOfSubtitle[index])
                                     .multilineTextAlignment(.center)
-                                    .font(.system(size: 16, weight: .bold))
+                                    .font(.system(size: 18, weight: .light))
                                     .foregroundColor(.gray)
                                     .padding(.horizontal)
                                      
