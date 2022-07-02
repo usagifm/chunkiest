@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2EA5E91528706CF300781FAF /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5E91428706CF300781FAF /* OnBoardingView.swift */; };
 		DC02EDF6286D8DEE0086A1F1 /* EditDetailTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC02EDF5286D8DEE0086A1F1 /* EditDetailTaskView.swift */; };
 		DC02EDF8286E12DE0086A1F1 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC02EDF7286E12DE0086A1F1 /* test.swift */; };
 		DC02EDFA286E1DAE0086A1F1 /* StatisticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC02EDF9286E1DAE0086A1F1 /* StatisticView.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2EA5E91428706CF300781FAF /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
 		DC02EDF5286D8DEE0086A1F1 /* EditDetailTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDetailTaskView.swift; sourceTree = "<group>"; };
 		DC02EDF7286E12DE0086A1F1 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		DC02EDF9286E1DAE0086A1F1 /* StatisticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticView.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				DCDBA46D286992C400D2736F /* Collapsible.swift */,
 				DC02EDF7286E12DE0086A1F1 /* test.swift */,
 				DC02EDF9286E1DAE0086A1F1 /* StatisticView.swift */,
+				2EA5E91428706CF300781FAF /* OnBoardingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				DC5F14422860EA0800857EB2 /* Persistence.swift in Sources */,
 				DC02EDF8286E12DE0086A1F1 /* test.swift in Sources */,
 				DC5F146D2860F0BD00857EB2 /* TaskViewModel.swift in Sources */,
+				2EA5E91528706CF300781FAF /* OnBoardingView.swift in Sources */,
 				DC5F14452860EA0800857EB2 /* Task_Management_Beta.xcdatamodeld in Sources */,
 				DCEF4E662862F2D5002E4853 /* DynamicFilteredView.swift in Sources */,
 				DC5F146A2860ECEA00857EB2 /* Home.swift in Sources */,
