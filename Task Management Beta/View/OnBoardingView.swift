@@ -19,7 +19,7 @@ struct Onboard: View {
     @State var CurrentIndex : Int = 0
     @State var ArrayOfImage : [String] = ["pic0", "pic1", "pic2"]
     @State var ArrayOfTitle : [String] = ["Welcome To Chunkist", "Take Baby Steps", "Track Progress"]
-    @State var ArrayOfSubtitle : [String] = ["“The secret of getting ahead is start where you are, with what you’ve got.”", "Simplify your task by breaking it down", "Be aware on how your journeys have been"]
+    @State var ArrayOfSubtitle : [String] = ["\"The secret of getting ahead is start where you are, with what you’ve got.\"", "\"Simplify your task by breaking it down\"", "\"Be aware on how your journeys have been\""]
      
     var body: some View {
         VStack {
