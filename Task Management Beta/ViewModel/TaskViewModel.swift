@@ -15,6 +15,8 @@ enum segmentedEnum: String{
     case failed = "Failed"
 }
 
+
+
 //
 //struct Model {
 //    var taskArrayBaru: [Task] = []
@@ -51,11 +53,36 @@ enum segmentedEnum: String{
 ////    }
 //    
 //}
+//class statisticDataStruct{
+//    var today: Int
+//    var upcoming: Int
+//    var done: Int
+//    var failed: Int
+//    var percentage: Float
+//
+//    init(today: Int, upcoming: Int, done: Int, failed: Int, percentage: Float) {
+//        self.today = today
+//        self.upcoming = upcoming
+//        self.done = done
+//        self.failed = failed
+//        self.percentage = percentage
+//    }
+//}
 
 class TaskViewModel: ObservableObject {
     
+    
     private let persistenceController = PersistenceController.shared
     
+    @Published var countTodayTask:Int = 0
+    @Published var countUpcomingTask:Int = 0
+    @Published var countDoneTask:Int = 0
+    @Published var countFailedTask:Int = 0
+    
+    @Published var countTotalPercentageTaskDone:Float = 0
+  
+    
+    @Published var statisticData: [Task] = []
     
     @Published var subtaskArray: [Subtask] = []
     
@@ -213,12 +240,159 @@ class TaskViewModel: ObservableObject {
     //            saveData()
     //
     //        } catch {
-    //            // If it doesn't work
-    //            print("Error getting data. \(error.localizedDescription)")
-    //        }
+    //  _esn't work
+    //  _Error getting data. \(error.localizedDescription)")
+    //  __
     //    }
     
-    //
+    func loadStatiscticDatas(){
+     
+         countTodayTask = loadStatisticDataToday()
+         countUpcomingTask = loadStatisticDataUpcoming()
+         countDoneTask = loadStatisticDataDone()
+         countFailedTask = loadStatisticDataFailed()
+        
+        countTotalPercentageTaskDone = Float(countTodayTask + countUpcomingTask + countDoneTask + countFailedTask)
+        print("Total percentage : \(countTotalPercentageTaskDone)")
+        if countTotalPercentageTaskDone > 0 {
+            countTotalPercentageTaskDone = ( Float(countDoneTask) / countTotalPercentageTaskDone) * 100
+            print("Total percentage after precentaged : \(countTotalPercentageTaskDone)")
+        }else {
+            countTotalPercentageTaskDone = 0
+        }
+    }
+    
+    func loadStatisticDataFailed() -> Int {
+        let request = NSFetchRequest<Task>(entityName: "Task")
+        let sort = NSSortDescriptor(key: "type", ascending: true)
+        request.sortDescriptors = [sort]
+        
+        let calendar = Calendar.current
+        var predicate: NSPredicate!
+        
+        let today = calendar.startOfDay(for: Date())
+        let past = Date.distantPast
+        
+        // filter Key
+        let filterKey = "deadline"
+        
+        // this will fetch task between today and tommowrow which is 24 hours
+        // 0-flase, 1-true
+        
+        predicate = NSPredicate(format: "\(filterKey) >= %@ AND \(filterKey) < %@ AND isCompleted == %i",
+                                argumentArray: [past,today,0])
+        request.predicate = predicate
+        
+        var jumlah: Int = 0
+        do {
+        try statisticData = persistenceController.container.viewContext.fetch(request)
+            jumlah = statisticData.count
+            print(statisticData.count)
+            print("Berhasil.")
+        }catch{
+            print("Belum berhasil")
+        }
+        return jumlah
+    }
+    
+    func loadStatisticDataDone() -> Int {
+        let request = NSFetchRequest<Task>(entityName: "Task")
+        let sort = NSSortDescriptor(key: "type", ascending: true)
+        request.sortDescriptors = [sort]
+        
+        var predicate: NSPredicate!
+        predicate = NSPredicate(format: "isCompleted == %i",
+                                argumentArray: [1])
+        request.predicate = predicate
+        
+        var jumlah: Int = 0
+        do {
+        try statisticData = persistenceController.container.viewContext.fetch(request)
+            jumlah = statisticData.count
+            print(statisticData.count)
+            print("Berhasil.")
+        }catch{
+            print("Belum berhasil")
+        }
+        return jumlah
+    }
+    
+    func loadStatisticDataUpcoming()-> Int {
+        
+        let request = NSFetchRequest<Task>(entityName: "Task")
+        let sort = NSSortDescriptor(key: "type", ascending: true)
+        request.sortDescriptors = [sort]
+        
+        let calendar = Calendar.current
+        var predicate: NSPredicate!
+        
+        let today = calendar.startOfDay(for: calendar.date(byAdding: .day,value:1, to: Date())!)
+        let tommorow = Date.distantFuture
+        
+        // filter Key
+        let filterKey = "deadline"
+        
+        // this will fetch task between today and tommowrow which is 24 hours
+        // 0-flase, 1-true
+        
+        predicate = NSPredicate(format: "\(filterKey) >= %@ AND \(filterKey) < %@ AND isCompleted == %i",
+                                argumentArray: [today,tommorow,0])
+        
+        request.predicate = predicate
+
+        var jumlah: Int = 0
+        do {
+        try statisticData = persistenceController.container.viewContext.fetch(request)
+            jumlah = statisticData.count
+            print(statisticData.count)
+            print("Berhasil.")
+            
+         
+        }catch{
+            print("Belum berhasil")
+        }
+        
+        return jumlah
+        
+    }
+    func loadStatisticDataToday()-> Int {
+        
+        let request = NSFetchRequest<Task>(entityName: "Task")
+        let sort = NSSortDescriptor(key: "type", ascending: true)
+        request.sortDescriptors = [sort]
+        
+        let calendar = Calendar.current
+        var predicate: NSPredicate!
+        
+        let today = calendar.startOfDay(for: Date())
+        let tommorow = calendar.date(byAdding: .day,value:1, to: today)!
+        
+        // filter Key
+        let filterKey = "deadline"
+        
+        // this will fetch task between today and tommowrow which is 24 hours
+        // 0-flase, 1-true
+        
+        predicate = NSPredicate(format: "\(filterKey) >= %@ AND \(filterKey) < %@ AND isCompleted == %i",
+                                argumentArray: [today,tommorow,0])
+        request.predicate = predicate
+
+        var jumlah: Int = 0
+        do {
+        try statisticData = persistenceController.container.viewContext.fetch(request)
+            jumlah = statisticData.count
+            print(statisticData.count)
+            print("Berhasil.")
+            
+         
+        }catch{
+            print("Belum berhasil")
+        }
+        
+        return jumlah
+        
+        
+    }
     
     func loadTasks(currentTab: segmentedEnum) {
         
