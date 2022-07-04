@@ -120,7 +120,62 @@ class TaskViewModel: ObservableObject {
     
     // MARK : Adding task to CoreData
     
+    
+    func sendNotificationDaysBefore( taskDeadline: Date, howManyDaysBefore: Int, notificationTitle: String, notificationSubtitle: String){
+        
+        let content = UNMutableNotificationContent()
+        content.title = notificationTitle
+        content.subtitle = notificationSubtitle
+        content.sound = UNNotificationSound.default
+        
+        let modifiedDate = Calendar.current.date(byAdding: .day, value: howManyDaysBefore, to: taskDeadline)!
+//        print(modifiedDate)
+//        print("Coookk !")
+
+        
+        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: modifiedDate)
+//        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+        // choose a random identifier
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+
+        // add our notification request
+        UNUserNotificationCenter.current().add(request)
+    }
+    
+//    func sendNotificationOneWeekBefore(taskTitle: String, taskDeadline: Date){
+//
+//        let content = UNMutableNotificationContent()
+//        content.title = "Heads up !"
+//        content.subtitle = "You still have one day for \(taskTitle)"
+//        content.sound = UNNotificationSound.default
+//
+//        let modifiedDate = Calendar.current.date(byAdding: .day, value: -7, to: taskDeadline)!
+////        print(modifiedDate)
+////        print("Coookk !")
+//
+//
+//        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: modifiedDate)
+////        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+//
+//        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+//        // choose a random identifier
+//        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+//
+//        // add our notification request
+//        UNUserNotificationCenter.current().add(request)
+//    }
+//
     func addTask(context: NSManagedObjectContext)-> Bool{
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+            if success {
+                print("All set!")
+            } else if let error = error {
+                print(error.localizedDescription)
+            }
+        }
         
         // Mark : Updating Existing Task Data in CoreData
         var task: Task!
@@ -130,6 +185,15 @@ class TaskViewModel: ObservableObject {
             task = Task(context: context)
         }
         
+        // send notif 7 days before deadline
+        
+        sendNotificationDaysBefore(taskDeadline: taskDeadline, howManyDaysBefore: -7, notificationTitle: "Slowly but surely, bit by bit !", notificationSubtitle: "You have 1 Week left for \(taskTitle), let’s do it bit by bit!")
+          
+        // send notif 1 day before deadline
+        sendNotificationDaysBefore(taskDeadline: taskDeadline, howManyDaysBefore: -1, notificationTitle: "Heads up !", notificationSubtitle: "You still have one day for \(taskTitle), You can do it bit by bit !")
+          
+        
+        
         task.id = UUID()
         task.title = taskTitle
         task.color = taskColor
@@ -137,6 +201,7 @@ class TaskViewModel: ObservableObject {
         task.type = taskType
         task.taskDescription = taskDescription
         task.isCompleted = false
+        
         
         
         if subtaskArrayToAdd.count != 0 {

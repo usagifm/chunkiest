@@ -57,12 +57,13 @@ struct DetailTaskView: View {
                         showDeleteAlert.toggle()
                
                     } label: {
-                        Image(systemName: "trash")
-                            .font(.title3)
+//                        Image(systemName: "trash")
+                        Text("Delete")
+//                            .font(.title3)
                             .foregroundColor(.red)
                     }.opacity(taskModel.detailTask == nil ? 0 : 1)
                     
-                    .alert("Delete Task ?", isPresented: $showDeleteAlert, actions: {
+                    .alert("Delete this task ?", isPresented: $showDeleteAlert, actions: {
                             Button("Cancel", role: .cancel){
                                 
                             }
@@ -249,11 +250,11 @@ struct DetailTaskView: View {
                     }
                 //                            }
             }.frame(maxWidth: .infinity)
-                .onAppear(perform: {
-                    
-                    taskModel.loadSubtasks(task: taskModel.detailTask!)
-                    
-                })
+//                .onAppear(perform: {
+//
+//                    taskModel.loadSubtasks(task: taskModel.detailTask ?? nil)
+//
+//                })
                 .listStyle(.plain)
                 .environment(\.editMode, $editMode)
             

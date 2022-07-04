@@ -17,6 +17,9 @@ struct AddNewTask: View {
     @Environment(\.self) var env
     @Namespace var animation
     var body: some View {
+        GeometryReader { g in
+            ScrollView {
+
         VStack{
             Text("Add New Task")
                 .font(.title3.bold())
@@ -97,7 +100,7 @@ struct AddNewTask: View {
                 
                 Text(taskModel.taskDeadline.formatted(date: .abbreviated, time:.omitted) + ", " + taskModel.taskDeadline.formatted(date: .omitted, time: .shortened))
                     .font(.callout)
-                    .foregroundColor(.black)
+//                    .foregroundColor(.black)
                     .fontWeight(.semibold)
                     .padding(.top,8)
             }
@@ -107,7 +110,7 @@ struct AddNewTask: View {
                     taskModel.showDatePicker.toggle()
                 }label: {
                     Image(systemName: "calendar")
-                        .foregroundColor(.black)
+//                        .foregroundColor(.black)
                 }
             }
             
@@ -150,7 +153,7 @@ struct AddNewTask: View {
                             .font(.callout)
                             .padding(.vertical,8)
                             .frame(maxWidth: .infinity)
-                            .foregroundColor(taskModel.taskType == type ? .white : .black)
+                            .foregroundColor(taskModel.taskType == type ? .white : Color("BlueAccent"))
                             .background{
                                 if taskModel.taskType == type{
                                     Capsule()
@@ -159,7 +162,7 @@ struct AddNewTask: View {
                                     
                                 }else {
                                     Capsule()
-                                        .strokeBorder(.black)
+                                        .strokeBorder(Color("BlueAccent"))
                                 }
                                 
                             }.contentShape(Capsule())
@@ -231,30 +234,8 @@ struct AddNewTask: View {
                     
                     ForEach(taskModel.subtaskArrayToAdd) { subtask in
                         SubtaskRowInDetailTaskView(subtask: subtask)
-//                        HStack{
-//                            //        Text(subtask.name ?? "")
-//                            TextField("Subtask Name", text: $subtask.name)
-//                                .onChange(of: subtask.name, perform: { _ in
-//                                    taskModel.editSubtaskName(context: env.managedObjectContext, subtask: subtask)
-//                                    //                        taskModel.loadTasks(currentTab: taskModel.currentTabEnum)
-//                                    print("Berhasil edit subtask")
-//                                })
-//
-//                        }
                     }.onMove(perform: moveSubtask)
                         .onDelete(perform: deleteSubtask)
-                    //                            Button{
-                    //
-                    //                                if  taskModel.addSubtask(context: env.managedObjectContext, task: taskModel.detailTask!){
-                    //
-                    //                                    taskModel.detailTask = taskModel.detailTask
-                    //                                    taskModel.loadSubtasks(task: taskModel.detailTask!)
-                    //
-                    //                                }
-                    //
-                    //
-                    //
-                    //                            }label: {
                     Text("Add Subtask...")
                         .foregroundColor(.red)
                     
@@ -263,8 +244,10 @@ struct AddNewTask: View {
                           taskModel.addSubtaskForAdd(context: env.managedObjectContext)
                             
                         }
-                    //                            }
-                }.frame(maxWidth: .infinity)
+
+                }
+                .frame(width: g.size.width - 30, height: 200, alignment: .center)
+                .frame(maxWidth: .infinity)
 //                    .onAppear(perform: {
 //
 //                        taskModel.loadSubtasks(task: taskModel.detailTask!)
@@ -276,6 +259,7 @@ struct AddNewTask: View {
                 
                 
             }
+
             
             
             
@@ -299,7 +283,7 @@ struct AddNewTask: View {
                         .datePickerStyle(.graphical)
                         .labelsHidden()
                         .padding()
-                        .background(.white, in:RoundedRectangle(cornerRadius: 12, style: .continuous))
+                        .background(Color(UIColor.systemFill), in:RoundedRectangle(cornerRadius: 12, style: .continuous))
                         .padding()
                     
                 }
@@ -308,6 +292,10 @@ struct AddNewTask: View {
             .animation(.easeInOut, value: taskModel.showDatePicker)
         }
         
+        
+    }
+    
+}
     }
     
     

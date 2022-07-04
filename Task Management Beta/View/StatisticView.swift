@@ -28,7 +28,7 @@ struct StatisticView: View {
             VStack(alignment: .center){
                 HStack(alignment: .firstTextBaseline,spacing: 0){
                     Spacer()
-                    UserProgress(title: "Today", color: Color("Blue"), image: "circle.fill", progress: CGFloat(taskModel.countTodayTask)).padding()
+                    UserProgress(title: "Today", color: Color("Blue"), image: "circle", progress: CGFloat(taskModel.countTodayTask)).padding()
                         //.border(.black)
                     Spacer()
                     UserProgress(title: "Done", color: Color("Green"), image: "checkmark", progress: CGFloat(taskModel.countDoneTask))
@@ -38,7 +38,7 @@ struct StatisticView: View {
                 }.frame(maxWidth: .infinity)
                 HStack(spacing: 0){
                     Spacer()
-                    UserProgress(title: "Upcoming", color: Color("Orange"), image: "person", progress: CGFloat(taskModel.countUpcomingTask)).padding()
+                    UserProgress(title: "Upcoming", color: Color("Orange"), image: "calendar", progress: CGFloat(taskModel.countUpcomingTask)).padding()
                         .padding(.leading,19)
                         //.border(.black)
                     Spacer()
@@ -108,7 +108,7 @@ struct StatisticView: View {
                     .font(.caption2.bold())
                     .foregroundColor(.gray)
             }
-        }.background(Color.white)
+        }
     }
 }
 

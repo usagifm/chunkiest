@@ -89,7 +89,7 @@ struct EditDetailTaskView: View {
                 
                 Text(taskModel.taskDeadline.formatted(date: .abbreviated, time:.omitted) + ", " + taskModel.taskDeadline.formatted(date: .omitted, time: .shortened))
                     .font(.callout)
-                    .foregroundColor(.black)
+//                    .foregroundColor(.black)
                     .fontWeight(.semibold)
                     .padding(.top,8)
             }
@@ -99,7 +99,7 @@ struct EditDetailTaskView: View {
                     taskModel.showDatePicker.toggle()
                 }label: {
                     Image(systemName: "calendar")
-                        .foregroundColor(.black)
+//                        .foregroundColor(.black)
                 }
             }
             
@@ -142,7 +142,7 @@ struct EditDetailTaskView: View {
                             .font(.callout)
                             .padding(.vertical,8)
                             .frame(maxWidth: .infinity)
-                            .foregroundColor(taskModel.taskType == type ? .white : .black)
+                            .foregroundColor(taskModel.taskType == type ? .white :  Color("BlueAccent"))
                             .background{
                                 if taskModel.taskType == type{
                                     Capsule()
@@ -151,7 +151,7 @@ struct EditDetailTaskView: View {
                                     
                                 }else {
                                     Capsule()
-                                        .strokeBorder(.black)
+                                        .strokeBorder( Color("BlueAccent"))
                                 }
                                 
                             }.contentShape(Capsule())
@@ -215,7 +215,7 @@ struct EditDetailTaskView: View {
                         .datePickerStyle(.graphical)
                         .labelsHidden()
                         .padding()
-                        .background(.white, in:RoundedRectangle(cornerRadius: 12, style: .continuous))
+                        .background(Color(UIColor.systemFill), in:RoundedRectangle(cornerRadius: 12, style: .continuous))
                         .padding()
                     
                 }
