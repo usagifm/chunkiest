@@ -468,7 +468,7 @@ class TaskViewModel: ObservableObject {
         
         //        request.predicate = NSPredicate(format: "%K == %@", "task.id", task.id! as CVarArg )
         
-        let sort = NSSortDescriptor(key: "type", ascending: true)
+        let sort = NSSortDescriptor(key: "type", ascending: false)
         
         request.sortDescriptors = [sort]
         
