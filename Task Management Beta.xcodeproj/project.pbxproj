@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D872D2B28744F9900E1A1D8 /* Logo Sri Fajar.sketch in Resources */ = {isa = PBXBuildFile; fileRef = 1D872D2628744F9900E1A1D8 /* Logo Sri Fajar.sketch */; };
+		1D872D2C28744F9900E1A1D8 /* Group.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D872D2728744F9900E1A1D8 /* Group.png */; };
+		1D872D2D28744F9900E1A1D8 /* AppLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D872D2828744F9900E1A1D8 /* AppLogo.png */; };
+		1D872D2E28744F9900E1A1D8 /* opt.1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D872D2928744F9900E1A1D8 /* opt.1.png */; };
+		1D872D2F28744F9900E1A1D8 /* opt.2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D872D2A28744F9900E1A1D8 /* opt.2.png */; };
 		2EA5E91528706CF300781FAF /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5E91428706CF300781FAF /* OnBoardingView.swift */; };
 		DC02EDF6286D8DEE0086A1F1 /* EditDetailTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC02EDF5286D8DEE0086A1F1 /* EditDetailTaskView.swift */; };
 		DC02EDF8286E12DE0086A1F1 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC02EDF7286E12DE0086A1F1 /* test.swift */; };
@@ -48,6 +53,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1D872D2628744F9900E1A1D8 /* Logo Sri Fajar.sketch */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Logo Sri Fajar.sketch"; sourceTree = "<group>"; };
+		1D872D2728744F9900E1A1D8 /* Group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Group.png; sourceTree = "<group>"; };
+		1D872D2828744F9900E1A1D8 /* AppLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppLogo.png; sourceTree = "<group>"; };
+		1D872D2928744F9900E1A1D8 /* opt.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = opt.1.png; sourceTree = "<group>"; };
+		1D872D2A28744F9900E1A1D8 /* opt.2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = opt.2.png; sourceTree = "<group>"; };
 		2EA5E91428706CF300781FAF /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
 		DC02EDF5286D8DEE0086A1F1 /* EditDetailTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDetailTaskView.swift; sourceTree = "<group>"; };
 		DC02EDF7286E12DE0086A1F1 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
@@ -100,9 +110,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D872D2528744F5900E1A1D8 /* Design Assets */ = {
+			isa = PBXGroup;
+			children = (
+				1D872D2728744F9900E1A1D8 /* Group.png */,
+				1D872D2628744F9900E1A1D8 /* Logo Sri Fajar.sketch */,
+				1D872D2928744F9900E1A1D8 /* opt.1.png */,
+				1D872D2A28744F9900E1A1D8 /* opt.2.png */,
+				1D872D2828744F9900E1A1D8 /* AppLogo.png */,
+			);
+			path = "Design Assets";
+			sourceTree = "<group>";
+		};
 		DC5F142C2860EA0500857EB2 = {
 			isa = PBXGroup;
 			children = (
+				1D872D2528744F5900E1A1D8 /* Design Assets */,
 				DC5F14372860EA0500857EB2 /* Task Management Beta */,
 				DC5F144D2860EA0800857EB2 /* Task Management BetaTests */,
 				DC5F14572860EA0800857EB2 /* Task Management BetaUITests */,
@@ -307,9 +330,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D872D2C28744F9900E1A1D8 /* Group.png in Resources */,
+				1D872D2E28744F9900E1A1D8 /* opt.1.png in Resources */,
+				1D872D2B28744F9900E1A1D8 /* Logo Sri Fajar.sketch in Resources */,
 				DCA104AB286F6B69004A7DD9 /* pop.mp3 in Resources */,
 				DC5F14402860EA0800857EB2 /* Preview Assets.xcassets in Resources */,
+				1D872D2D28744F9900E1A1D8 /* AppLogo.png in Resources */,
 				DC5F143D2860EA0800857EB2 /* Assets.xcassets in Resources */,
+				1D872D2F28744F9900E1A1D8 /* opt.2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
