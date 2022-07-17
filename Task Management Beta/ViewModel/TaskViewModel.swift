@@ -190,7 +190,7 @@ class TaskViewModel: ObservableObject {
         sendNotificationDaysBefore(taskDeadline: taskDeadline, howManyDaysBefore: -7, notificationTitle: "Slowly but surely, bit by bit !", notificationSubtitle: "You have 1 Week left for \(taskTitle), let’s do it bit by bit!")
           
         // send notif 1 day before deadline
-        sendNotificationDaysBefore(taskDeadline: taskDeadline, howManyDaysBefore: -1, notificationTitle: "Heads up !", notificationSubtitle: "You still have one day for \(taskTitle), You can do it bit by bit !")
+        sendNotificationDaysBefore(taskDeadline: taskDeadline, howManyDaysBefore: -1, notificationTitle: "Heads up !", notificationSubtitle: "You still have one day for \(taskTitle), lets finish it")
           
         
         

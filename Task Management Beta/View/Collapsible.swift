@@ -20,7 +20,7 @@ struct Collapsible<Content: View>: View {
                             .foregroundColor(Color.gray)
                     }
                     .padding(.bottom, 1)
-                    .background(Color.white.opacity(0.01))
+//                    .background(Color.white.opacity(0.01))
                 }
             )
             .buttonStyle(PlainButtonStyle())

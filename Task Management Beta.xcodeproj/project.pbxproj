@@ -23,6 +23,7 @@
 		DC5F146A2860ECEA00857EB2 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5F14692860ECEA00857EB2 /* Home.swift */; };
 		DC5F146D2860F0BD00857EB2 /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5F146C2860F0BC00857EB2 /* TaskViewModel.swift */; };
 		DC5F146F2860F70100857EB2 /* AddNewTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5F146E2860F70100857EB2 /* AddNewTask.swift */; };
+		DC85DDA22884A5FD0028E600 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC85DDA12884A5FD0028E600 /* CloudKit.framework */; };
 		DC9755E72869544F00F27506 /* DetailTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9755E62869544F00F27506 /* DetailTaskView.swift */; };
 		DCA104A7286F6B51004A7DD9 /* PlaySound.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA104A2286F6B50004A7DD9 /* PlaySound.swift */; };
 		DCA104AB286F6B69004A7DD9 /* pop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DCA104AA286F6B69004A7DD9 /* pop.mp3 */; };
@@ -67,6 +68,8 @@
 		DC5F14692860ECEA00857EB2 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		DC5F146C2860F0BC00857EB2 /* TaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
 		DC5F146E2860F70100857EB2 /* AddNewTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTask.swift; sourceTree = "<group>"; };
+		DC85DD9F2884A5FB0028E600 /* Task Management Beta.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Task Management Beta.entitlements"; sourceTree = "<group>"; };
+		DC85DDA12884A5FD0028E600 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		DC9755E62869544F00F27506 /* DetailTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTaskView.swift; sourceTree = "<group>"; };
 		DCA104A2286F6B50004A7DD9 /* PlaySound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaySound.swift; sourceTree = "<group>"; };
 		DCA104AA286F6B69004A7DD9 /* pop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pop.mp3; sourceTree = "<group>"; };
@@ -80,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC85DDA22884A5FD0028E600 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +111,7 @@
 				DC5F144D2860EA0800857EB2 /* Task Management BetaTests */,
 				DC5F14572860EA0800857EB2 /* Task Management BetaUITests */,
 				DC5F14362860EA0500857EB2 /* Products */,
+				DC85DDA02884A5FD0028E600 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -123,6 +128,7 @@
 		DC5F14372860EA0500857EB2 /* Task Management Beta */ = {
 			isa = PBXGroup;
 			children = (
+				DC85DD9F2884A5FB0028E600 /* Task Management Beta.entitlements */,
 				DCD0A49428737FBB0021A333 /* Task-Management-Beta-Info.plist */,
 				DCA104A1286F6B50004A7DD9 /* Helpers */,
 				DCA104A3286F6B51004A7DD9 /* Sounds */,
@@ -185,6 +191,14 @@
 				DC5F146C2860F0BC00857EB2 /* TaskViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		DC85DDA02884A5FD0028E600 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DC85DDA12884A5FD0028E600 /* CloudKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		DCA104A1286F6B50004A7DD9 /* Helpers */ = {
@@ -504,6 +518,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Task Management Beta/Task Management Beta.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Task Management Beta/Preview Content\"";
@@ -535,6 +550,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Task Management Beta/Task Management Beta.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Task Management Beta/Preview Content\"";
