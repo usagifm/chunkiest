@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1726B7BA28852A7C00DAD7BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1726B7B928852A7C00DAD7BE /* Assets.xcassets */; };
+		1726B7C028852A7C00DAD7BE /* Task Management WatchOS WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 1726B7BF28852A7C00DAD7BE /* Task Management WatchOS WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		1726B7C528852A7C00DAD7BE /* Task_Management_BetaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1726B7C428852A7C00DAD7BE /* Task_Management_BetaApp.swift */; };
+		1726B7C728852A7C00DAD7BE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1726B7C628852A7C00DAD7BE /* ContentView.swift */; };
+		1726B7C928852A7C00DAD7BE /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1726B7C828852A7C00DAD7BE /* NotificationController.swift */; };
+		1726B7CB28852A7C00DAD7BE /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1726B7CA28852A7C00DAD7BE /* NotificationView.swift */; };
+		1726B7CD28852A7C00DAD7BE /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1726B7CC28852A7C00DAD7BE /* ComplicationController.swift */; };
+		1726B7CF28852A7D00DAD7BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1726B7CE28852A7D00DAD7BE /* Assets.xcassets */; };
+		1726B7D228852A7D00DAD7BE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1726B7D128852A7D00DAD7BE /* Preview Assets.xcassets */; };
+		1726B7D728852A7D00DAD7BE /* Task Management WatchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 1726B7B728852A7B00DAD7BE /* Task Management WatchOS.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		1726B7E4288667D200DAD7BE /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1726B7E3288667D200DAD7BE /* SwiftUIView.swift */; };
 		1D872D2B28744F9900E1A1D8 /* Logo Sri Fajar.sketch in Resources */ = {isa = PBXBuildFile; fileRef = 1D872D2628744F9900E1A1D8 /* Logo Sri Fajar.sketch */; };
 		1D872D2C28744F9900E1A1D8 /* Group.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D872D2728744F9900E1A1D8 /* Group.png */; };
 		1D872D2D28744F9900E1A1D8 /* AppLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D872D2828744F9900E1A1D8 /* AppLogo.png */; };
@@ -37,6 +48,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		1726B7C128852A7C00DAD7BE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DC5F142D2860EA0500857EB2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1726B7BE28852A7C00DAD7BE;
+			remoteInfo = "Task Management WatchOS WatchKit Extension";
+		};
+		1726B7D528852A7D00DAD7BE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DC5F142D2860EA0500857EB2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1726B7B628852A7B00DAD7BE;
+			remoteInfo = "Task Management WatchOS";
+		};
 		DC5F144B2860EA0800857EB2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DC5F142D2860EA0500857EB2 /* Project object */;
@@ -53,7 +78,45 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		1726B7DB28852A7D00DAD7BE /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				1726B7C028852A7C00DAD7BE /* Task Management WatchOS WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1726B7DF28852A7D00DAD7BE /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				1726B7D728852A7D00DAD7BE /* Task Management WatchOS.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		1726B7B728852A7B00DAD7BE /* Task Management WatchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Task Management WatchOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1726B7B928852A7C00DAD7BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1726B7BF28852A7C00DAD7BE /* Task Management WatchOS WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Task Management WatchOS WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1726B7C428852A7C00DAD7BE /* Task_Management_BetaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task_Management_BetaApp.swift; sourceTree = "<group>"; };
+		1726B7C628852A7C00DAD7BE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1726B7C828852A7C00DAD7BE /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		1726B7CA28852A7C00DAD7BE /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		1726B7CC28852A7C00DAD7BE /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		1726B7CE28852A7D00DAD7BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1726B7D128852A7D00DAD7BE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1726B7D328852A7D00DAD7BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1726B7D428852A7D00DAD7BE /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		1726B7E3288667D200DAD7BE /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		1D872D2628744F9900E1A1D8 /* Logo Sri Fajar.sketch */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Logo Sri Fajar.sketch"; sourceTree = "<group>"; };
 		1D872D2728744F9900E1A1D8 /* Group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Group.png; sourceTree = "<group>"; };
 		1D872D2828744F9900E1A1D8 /* AppLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppLogo.png; sourceTree = "<group>"; };
@@ -89,6 +152,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1726B7BC28852A7C00DAD7BE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DC5F14322860EA0500857EB2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -114,6 +184,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1726B7B828852A7B00DAD7BE /* Task Management WatchOS */ = {
+			isa = PBXGroup;
+			children = (
+				1726B7B928852A7C00DAD7BE /* Assets.xcassets */,
+			);
+			path = "Task Management WatchOS";
+			sourceTree = "<group>";
+		};
+		1726B7C328852A7C00DAD7BE /* Task Management WatchOS WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				1726B7C428852A7C00DAD7BE /* Task_Management_BetaApp.swift */,
+				1726B7C628852A7C00DAD7BE /* ContentView.swift */,
+				1726B7C828852A7C00DAD7BE /* NotificationController.swift */,
+				1726B7CA28852A7C00DAD7BE /* NotificationView.swift */,
+				1726B7CC28852A7C00DAD7BE /* ComplicationController.swift */,
+				1726B7E3288667D200DAD7BE /* SwiftUIView.swift */,
+				1726B7CE28852A7D00DAD7BE /* Assets.xcassets */,
+				1726B7D328852A7D00DAD7BE /* Info.plist */,
+				1726B7D428852A7D00DAD7BE /* PushNotificationPayload.apns */,
+				1726B7D028852A7D00DAD7BE /* Preview Content */,
+			);
+			path = "Task Management WatchOS WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		1726B7D028852A7D00DAD7BE /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				1726B7D128852A7D00DAD7BE /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		1D872D2528744F5900E1A1D8 /* Design Assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +236,8 @@
 				DC5F14372860EA0500857EB2 /* Task Management Beta */,
 				DC5F144D2860EA0800857EB2 /* Task Management BetaTests */,
 				DC5F14572860EA0800857EB2 /* Task Management BetaUITests */,
+				1726B7B828852A7B00DAD7BE /* Task Management WatchOS */,
+				1726B7C328852A7C00DAD7BE /* Task Management WatchOS WatchKit Extension */,
 				DC5F14362860EA0500857EB2 /* Products */,
 				DC85DDA02884A5FD0028E600 /* Frameworks */,
 			);
@@ -144,6 +249,8 @@
 				DC5F14352860EA0500857EB2 /* Task Management Beta.app */,
 				DC5F144A2860EA0800857EB2 /* Task Management BetaTests.xctest */,
 				DC5F14542860EA0800857EB2 /* Task Management BetaUITests.xctest */,
+				1726B7B728852A7B00DAD7BE /* Task Management WatchOS.app */,
+				1726B7BF28852A7C00DAD7BE /* Task Management WatchOS WatchKit Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -243,6 +350,40 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		1726B7B628852A7B00DAD7BE /* Task Management WatchOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1726B7DC28852A7D00DAD7BE /* Build configuration list for PBXNativeTarget "Task Management WatchOS" */;
+			buildPhases = (
+				1726B7B528852A7B00DAD7BE /* Resources */,
+				1726B7DB28852A7D00DAD7BE /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1726B7C228852A7C00DAD7BE /* PBXTargetDependency */,
+			);
+			name = "Task Management WatchOS";
+			productName = "Task Management WatchOS";
+			productReference = 1726B7B728852A7B00DAD7BE /* Task Management WatchOS.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		1726B7BE28852A7C00DAD7BE /* Task Management WatchOS WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1726B7D828852A7D00DAD7BE /* Build configuration list for PBXNativeTarget "Task Management WatchOS WatchKit Extension" */;
+			buildPhases = (
+				1726B7BB28852A7C00DAD7BE /* Sources */,
+				1726B7BC28852A7C00DAD7BE /* Frameworks */,
+				1726B7BD28852A7C00DAD7BE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Task Management WatchOS WatchKit Extension";
+			productName = "Task Management WatchOS WatchKit Extension";
+			productReference = 1726B7BF28852A7C00DAD7BE /* Task Management WatchOS WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 		DC5F14342860EA0500857EB2 /* Task Management Beta */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DC5F145E2860EA0800857EB2 /* Build configuration list for PBXNativeTarget "Task Management Beta" */;
@@ -250,10 +391,12 @@
 				DC5F14312860EA0500857EB2 /* Sources */,
 				DC5F14322860EA0500857EB2 /* Frameworks */,
 				DC5F14332860EA0500857EB2 /* Resources */,
+				1726B7DF28852A7D00DAD7BE /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				1726B7D628852A7D00DAD7BE /* PBXTargetDependency */,
 			);
 			name = "Task Management Beta";
 			productName = "Task Management Beta";
@@ -306,6 +449,12 @@
 				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
+					1726B7B628852A7B00DAD7BE = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					1726B7BE28852A7C00DAD7BE = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
 					DC5F14342860EA0500857EB2 = {
 						CreatedOnToolsVersion = 13.4;
 					};
@@ -335,11 +484,30 @@
 				DC5F14342860EA0500857EB2 /* Task Management Beta */,
 				DC5F14492860EA0800857EB2 /* Task Management BetaTests */,
 				DC5F14532860EA0800857EB2 /* Task Management BetaUITests */,
+				1726B7B628852A7B00DAD7BE /* Task Management WatchOS */,
+				1726B7BE28852A7C00DAD7BE /* Task Management WatchOS WatchKit Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1726B7B528852A7B00DAD7BE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1726B7BA28852A7C00DAD7BE /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1726B7BD28852A7C00DAD7BE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1726B7D228852A7D00DAD7BE /* Preview Assets.xcassets in Resources */,
+				1726B7CF28852A7D00DAD7BE /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DC5F14332860EA0500857EB2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -372,6 +540,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1726B7BB28852A7C00DAD7BE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1726B7C928852A7C00DAD7BE /* NotificationController.swift in Sources */,
+				1726B7C728852A7C00DAD7BE /* ContentView.swift in Sources */,
+				1726B7E4288667D200DAD7BE /* SwiftUIView.swift in Sources */,
+				1726B7CD28852A7C00DAD7BE /* ComplicationController.swift in Sources */,
+				1726B7C528852A7C00DAD7BE /* Task_Management_BetaApp.swift in Sources */,
+				1726B7CB28852A7C00DAD7BE /* NotificationView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DC5F14312860EA0500857EB2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -414,6 +595,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		1726B7C228852A7C00DAD7BE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1726B7BE28852A7C00DAD7BE /* Task Management WatchOS WatchKit Extension */;
+			targetProxy = 1726B7C128852A7C00DAD7BE /* PBXContainerItemProxy */;
+		};
+		1726B7D628852A7D00DAD7BE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1726B7B628852A7B00DAD7BE /* Task Management WatchOS */;
+			targetProxy = 1726B7D528852A7D00DAD7BE /* PBXContainerItemProxy */;
+		};
 		DC5F144C2860EA0800857EB2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = DC5F14342860EA0500857EB2 /* Task Management Beta */;
@@ -427,6 +618,118 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		1726B7D928852A7D00DAD7BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Task Management WatchOS WatchKit Extension/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Task Management WatchOS WatchKit Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Task Management WatchOS WatchKit Extension";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = srifajar.chunkist.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Debug;
+		};
+		1726B7DA28852A7D00DAD7BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Task Management WatchOS WatchKit Extension/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Task Management WatchOS WatchKit Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Task Management WatchOS WatchKit Extension";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = srifajar.chunkist.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Release;
+		};
+		1726B7DD28852A7D00DAD7BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JR8723F8QY;
+				GENERATE_INFOPLIST_FILE = YES;
+				IBSC_MODULE = Task_Management_WatchOS_WatchKit_Extension;
+				INFOPLIST_KEY_CFBundleDisplayName = "Task Management WatchOS";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = srifajar.chunkist;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = srifajar.chunkist.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Debug;
+		};
+		1726B7DE28852A7D00DAD7BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JR8723F8QY;
+				GENERATE_INFOPLIST_FILE = YES;
+				IBSC_MODULE = Task_Management_WatchOS_WatchKit_Extension;
+				INFOPLIST_KEY_CFBundleDisplayName = "Task Management WatchOS";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = srifajar.chunkist;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = srifajar.chunkist.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Release;
+		};
 		DC5F145C2860EA0800857EB2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -684,6 +987,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1726B7D828852A7D00DAD7BE /* Build configuration list for PBXNativeTarget "Task Management WatchOS WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1726B7D928852A7D00DAD7BE /* Debug */,
+				1726B7DA28852A7D00DAD7BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1726B7DC28852A7D00DAD7BE /* Build configuration list for PBXNativeTarget "Task Management WatchOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1726B7DD28852A7D00DAD7BE /* Debug */,
+				1726B7DE28852A7D00DAD7BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		DC5F14302860EA0500857EB2 /* Build configuration list for PBXProject "Task Management Beta" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
