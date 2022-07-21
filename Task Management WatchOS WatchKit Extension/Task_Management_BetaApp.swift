@@ -11,9 +11,9 @@ import SwiftUI
 struct Task_Management_BetaApp: App {
     @SceneBuilder var body: some Scene {
         WindowGroup {
-            NavigationView {
+//            NavigationView {
                 ContentView(progress: 0.4)
-            }
+//            }
         }
 
         WKNotificationScene(controller: NotificationController.self, category: "myCategory")

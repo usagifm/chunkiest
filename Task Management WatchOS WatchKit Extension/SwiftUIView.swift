@@ -10,18 +10,21 @@ import SwiftUI
 struct SwiftUIView: View {
     @State var taskProgress: Double = 0.4
     var body: some View {
-        VStack{
-            ZStack{
-                CircularTaskProgressView(taskProgress: taskProgress)
-                VStack {
-                Text("\(taskProgress * 100, specifier: "%.0f") %")
-                        .font(.system(size: 13.75))
-                Text("Task Done")
-                        .font(.system(size: 13.75))
+        NavigationView {
+            VStack{
+                ZStack{
+                    CircularTaskProgressView(taskProgress: taskProgress)
+                    VStack {
+                    Text("\(taskProgress * 100, specifier: "%.0f") %")
+                            .font(.system(size: 13.75))
+                    Text("Task Done")
+                            .font(.system(size: 13.75))
+                    }
+                    .foregroundColor(Color.blue)
                 }
-                .foregroundColor(Color.blue)
+                .frame(width: 116, height: 116)
             }
-            .frame(width: 116, height: 116)
+            .navigationTitle("Summary")
         }
     }
 }

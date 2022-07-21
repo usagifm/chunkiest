@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1726B7BA28852A7C00DAD7BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1726B7B928852A7C00DAD7BE /* Assets.xcassets */; };
 		1726B7C028852A7C00DAD7BE /* Task Management WatchOS WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 1726B7BF28852A7C00DAD7BE /* Task Management WatchOS WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		1726B7C528852A7C00DAD7BE /* Task_Management_BetaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1726B7C428852A7C00DAD7BE /* Task_Management_BetaApp.swift */; };
 		1726B7C728852A7C00DAD7BE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1726B7C628852A7C00DAD7BE /* ContentView.swift */; };
@@ -24,6 +23,12 @@
 		1D872D2E28744F9900E1A1D8 /* opt.1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D872D2928744F9900E1A1D8 /* opt.1.png */; };
 		1D872D2F28744F9900E1A1D8 /* opt.2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D872D2A28744F9900E1A1D8 /* opt.2.png */; };
 		2EA5E91528706CF300781FAF /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5E91428706CF300781FAF /* OnBoardingView.swift */; };
+		2EF07D6E28893D0200D4C6D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EF07D6D28893D0200D4C6D2 /* Assets.xcassets */; };
+		2EF07D7028893DB400D4C6D2 /* TaskOverviewViewWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF07D6F28893DB400D4C6D2 /* TaskOverviewViewWatch.swift */; };
+		2EF07D7228893DBF00D4C6D2 /* TaskRowViewW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF07D7128893DBF00D4C6D2 /* TaskRowViewW.swift */; };
+		2EF07D7428893DD600D4C6D2 /* ModelWatch in Resources */ = {isa = PBXBuildFile; fileRef = 2EF07D7328893DD600D4C6D2 /* ModelWatch */; };
+		2EF07D7828893ED900D4C6D2 /* ModelWatch in Resources */ = {isa = PBXBuildFile; fileRef = 2EF07D7328893DD600D4C6D2 /* ModelWatch */; };
+		2EF07D7A28893FF600D4C6D2 /* ParentViewWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF07D7928893FF600D4C6D2 /* ParentViewWatch.swift */; };
 		DC02EDF6286D8DEE0086A1F1 /* EditDetailTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC02EDF5286D8DEE0086A1F1 /* EditDetailTaskView.swift */; };
 		DC02EDF8286E12DE0086A1F1 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC02EDF7286E12DE0086A1F1 /* test.swift */; };
 		DC02EDFA286E1DAE0086A1F1 /* StatisticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC02EDF9286E1DAE0086A1F1 /* StatisticView.swift */; };
@@ -105,7 +110,6 @@
 
 /* Begin PBXFileReference section */
 		1726B7B728852A7B00DAD7BE /* Task Management WatchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Task Management WatchOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1726B7B928852A7C00DAD7BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1726B7BF28852A7C00DAD7BE /* Task Management WatchOS WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Task Management WatchOS WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1726B7C428852A7C00DAD7BE /* Task_Management_BetaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task_Management_BetaApp.swift; sourceTree = "<group>"; };
 		1726B7C628852A7C00DAD7BE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -123,6 +127,11 @@
 		1D872D2928744F9900E1A1D8 /* opt.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = opt.1.png; sourceTree = "<group>"; };
 		1D872D2A28744F9900E1A1D8 /* opt.2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = opt.2.png; sourceTree = "<group>"; };
 		2EA5E91428706CF300781FAF /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
+		2EF07D6D28893D0200D4C6D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2EF07D6F28893DB400D4C6D2 /* TaskOverviewViewWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskOverviewViewWatch.swift; sourceTree = "<group>"; };
+		2EF07D7128893DBF00D4C6D2 /* TaskRowViewW.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskRowViewW.swift; sourceTree = "<group>"; };
+		2EF07D7328893DD600D4C6D2 /* ModelWatch */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ModelWatch; sourceTree = "<group>"; };
+		2EF07D7928893FF600D4C6D2 /* ParentViewWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentViewWatch.swift; sourceTree = "<group>"; };
 		DC02EDF5286D8DEE0086A1F1 /* EditDetailTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDetailTaskView.swift; sourceTree = "<group>"; };
 		DC02EDF7286E12DE0086A1F1 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		DC02EDF9286E1DAE0086A1F1 /* StatisticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticView.swift; sourceTree = "<group>"; };
@@ -187,7 +196,7 @@
 		1726B7B828852A7B00DAD7BE /* Task Management WatchOS */ = {
 			isa = PBXGroup;
 			children = (
-				1726B7B928852A7C00DAD7BE /* Assets.xcassets */,
+				2EF07D6D28893D0200D4C6D2 /* Assets.xcassets */,
 			);
 			path = "Task Management WatchOS";
 			sourceTree = "<group>";
@@ -195,12 +204,16 @@
 		1726B7C328852A7C00DAD7BE /* Task Management WatchOS WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				2EF07D7328893DD600D4C6D2 /* ModelWatch */,
 				1726B7C428852A7C00DAD7BE /* Task_Management_BetaApp.swift */,
 				1726B7C628852A7C00DAD7BE /* ContentView.swift */,
+				2EF07D7928893FF600D4C6D2 /* ParentViewWatch.swift */,
+				1726B7E3288667D200DAD7BE /* SwiftUIView.swift */,
+				2EF07D6F28893DB400D4C6D2 /* TaskOverviewViewWatch.swift */,
+				2EF07D7128893DBF00D4C6D2 /* TaskRowViewW.swift */,
 				1726B7C828852A7C00DAD7BE /* NotificationController.swift */,
 				1726B7CA28852A7C00DAD7BE /* NotificationView.swift */,
 				1726B7CC28852A7C00DAD7BE /* ComplicationController.swift */,
-				1726B7E3288667D200DAD7BE /* SwiftUIView.swift */,
 				1726B7CE28852A7D00DAD7BE /* Assets.xcassets */,
 				1726B7D328852A7D00DAD7BE /* Info.plist */,
 				1726B7D428852A7D00DAD7BE /* PushNotificationPayload.apns */,
@@ -495,7 +508,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1726B7BA28852A7C00DAD7BE /* Assets.xcassets in Resources */,
+				2EF07D7828893ED900D4C6D2 /* ModelWatch in Resources */,
+				2EF07D6E28893D0200D4C6D2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,6 +519,7 @@
 			files = (
 				1726B7D228852A7D00DAD7BE /* Preview Assets.xcassets in Resources */,
 				1726B7CF28852A7D00DAD7BE /* Assets.xcassets in Resources */,
+				2EF07D7428893DD600D4C6D2 /* ModelWatch in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -546,6 +561,9 @@
 			files = (
 				1726B7C928852A7C00DAD7BE /* NotificationController.swift in Sources */,
 				1726B7C728852A7C00DAD7BE /* ContentView.swift in Sources */,
+				2EF07D7228893DBF00D4C6D2 /* TaskRowViewW.swift in Sources */,
+				2EF07D7A28893FF600D4C6D2 /* ParentViewWatch.swift in Sources */,
+				2EF07D7028893DB400D4C6D2 /* TaskOverviewViewWatch.swift in Sources */,
 				1726B7E4288667D200DAD7BE /* SwiftUIView.swift in Sources */,
 				1726B7CD28852A7C00DAD7BE /* ComplicationController.swift in Sources */,
 				1726B7C528852A7C00DAD7BE /* Task_Management_BetaApp.swift in Sources */,

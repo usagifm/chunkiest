@@ -9,11 +9,18 @@ import SwiftUI
 import ClockKit
 
 struct ContentView: View {
+    
+    @State var currentView = 1
+    
     @State var progress: Float
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-        CircularComplicationView(progress: progress)
-    }
+//        CircularComplicationView(progress: progress)
+//        ParentViewWatch()
+            TabView(selection: $currentView) {
+                SwiftUIView().tag(1)
+                TaskOverviewViewWatch().tag(2)
+            }
+        }
 }
 
 struct CircularComplicationView: View {
