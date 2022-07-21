@@ -630,13 +630,13 @@ class TaskViewModel: ObservableObject {
         //        }else{
         //            task = Task(context: context)
         //        }
-        //
+        //        hehehehe
         subtaskUpdate = subtask
         subtaskUpdate.isComplete.toggle()
         
         if let _ = try? context.save(){
             
-            print("Berhasil ! update complete pake VM")
+            print("Berhasil! update complete pake VM")
             return true
             
             
