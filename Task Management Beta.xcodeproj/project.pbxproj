@@ -15,7 +15,7 @@
 		1726B7CD28852A7C00DAD7BE /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1726B7CC28852A7C00DAD7BE /* ComplicationController.swift */; };
 		1726B7CF28852A7D00DAD7BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1726B7CE28852A7D00DAD7BE /* Assets.xcassets */; };
 		1726B7D228852A7D00DAD7BE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1726B7D128852A7D00DAD7BE /* Preview Assets.xcassets */; };
-		1726B7D728852A7D00DAD7BE /* Task Management WatchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 1726B7B728852A7B00DAD7BE /* Task Management WatchOS.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		1726B7D728852A7D00DAD7BE /* Chunkist.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 1726B7B728852A7B00DAD7BE /* Chunkist.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		1726B7E4288667D200DAD7BE /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1726B7E3288667D200DAD7BE /* SwiftUIView.swift */; };
 		1D872D2B28744F9900E1A1D8 /* Logo Sri Fajar.sketch in Resources */ = {isa = PBXBuildFile; fileRef = 1D872D2628744F9900E1A1D8 /* Logo Sri Fajar.sketch */; };
 		1D872D2C28744F9900E1A1D8 /* Group.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D872D2728744F9900E1A1D8 /* Group.png */; };
@@ -48,7 +48,13 @@
 		DC9755E72869544F00F27506 /* DetailTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9755E62869544F00F27506 /* DetailTaskView.swift */; };
 		DCA104A7286F6B51004A7DD9 /* PlaySound.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA104A2286F6B50004A7DD9 /* PlaySound.swift */; };
 		DCA104AB286F6B69004A7DD9 /* pop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DCA104AA286F6B69004A7DD9 /* pop.mp3 */; };
+		DCB6B73C288A41FB00429CE3 /* PlaySound.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA104A2286F6B50004A7DD9 /* PlaySound.swift */; };
+		DCB6B73D288A41FE00429CE3 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5F14412860EA0800857EB2 /* Persistence.swift */; };
+		DCB6B73F288A4AE500429CE3 /* ComplicationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB6B73E288A4AE500429CE3 /* ComplicationsView.swift */; };
 		DCDBA46E286992C400D2736F /* Collapsible.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDBA46D286992C400D2736F /* Collapsible.swift */; };
+		DCEC38E8288989040018747B /* Task_Management_Beta.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DC5F14432860EA0800857EB2 /* Task_Management_Beta.xcdatamodeld */; };
+		DCEC38ED288989460018747B /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCEC38EC288989460018747B /* CloudKit.framework */; };
+		DCEC38F028898A4B0018747B /* TaskViewModelWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEC38EF28898A4B0018747B /* TaskViewModelWatch.swift */; };
 		DCEF4E662862F2D5002E4853 /* DynamicFilteredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEF4E652862F2D5002E4853 /* DynamicFilteredView.swift */; };
 /* End PBXBuildFile section */
 
@@ -101,7 +107,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				1726B7D728852A7D00DAD7BE /* Task Management WatchOS.app in Embed Watch Content */,
+				1726B7D728852A7D00DAD7BE /* Chunkist.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -109,7 +115,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1726B7B728852A7B00DAD7BE /* Task Management WatchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Task Management WatchOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1726B7B728852A7B00DAD7BE /* Chunkist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chunkist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1726B7BF28852A7C00DAD7BE /* Task Management WatchOS WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Task Management WatchOS WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1726B7C428852A7C00DAD7BE /* Task_Management_BetaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task_Management_BetaApp.swift; sourceTree = "<group>"; };
 		1726B7C628852A7C00DAD7BE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -155,8 +161,13 @@
 		DC9755E62869544F00F27506 /* DetailTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTaskView.swift; sourceTree = "<group>"; };
 		DCA104A2286F6B50004A7DD9 /* PlaySound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaySound.swift; sourceTree = "<group>"; };
 		DCA104AA286F6B69004A7DD9 /* pop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pop.mp3; sourceTree = "<group>"; };
+		DCB6B73E288A4AE500429CE3 /* ComplicationsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ComplicationsView.swift; path = "../../../Kerja/Apple Developer Academy @ ILB/IOS Development/NC3 - Projects (Watch)/SepotipaiComplicationsExercise/SepotipaiW WatchKit Extension/View/ComplicationsView.swift"; sourceTree = "<group>"; };
 		DCD0A49428737FBB0021A333 /* Task-Management-Beta-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Task-Management-Beta-Info.plist"; sourceTree = SOURCE_ROOT; };
 		DCDBA46D286992C400D2736F /* Collapsible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collapsible.swift; sourceTree = "<group>"; };
+		DCEC38EA288989290018747B /* Task Management WatchOS WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Task Management WatchOS WatchKit Extension.entitlements"; sourceTree = "<group>"; };
+		DCEC38EB288989380018747B /* Task Management WatchOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Task Management WatchOS.entitlements"; sourceTree = "<group>"; };
+		DCEC38EC288989460018747B /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS8.5.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
+		DCEC38EF28898A4B0018747B /* TaskViewModelWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModelWatch.swift; sourceTree = "<group>"; };
 		DCEF4E652862F2D5002E4853 /* DynamicFilteredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicFilteredView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -165,6 +176,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCEC38ED288989460018747B /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,6 +208,7 @@
 		1726B7B828852A7B00DAD7BE /* Task Management WatchOS */ = {
 			isa = PBXGroup;
 			children = (
+				DCEC38EB288989380018747B /* Task Management WatchOS.entitlements */,
 				2EF07D6D28893D0200D4C6D2 /* Assets.xcassets */,
 			);
 			path = "Task Management WatchOS";
@@ -204,6 +217,8 @@
 		1726B7C328852A7C00DAD7BE /* Task Management WatchOS WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				DCEC38EE28898A340018747B /* ViewModel */,
+				DCEC38EA288989290018747B /* Task Management WatchOS WatchKit Extension.entitlements */,
 				2EF07D7328893DD600D4C6D2 /* ModelWatch */,
 				1726B7C428852A7C00DAD7BE /* Task_Management_BetaApp.swift */,
 				1726B7C628852A7C00DAD7BE /* ContentView.swift */,
@@ -213,6 +228,7 @@
 				2EF07D7128893DBF00D4C6D2 /* TaskRowViewW.swift */,
 				1726B7C828852A7C00DAD7BE /* NotificationController.swift */,
 				1726B7CA28852A7C00DAD7BE /* NotificationView.swift */,
+				DCB6B73E288A4AE500429CE3 /* ComplicationsView.swift */,
 				1726B7CC28852A7C00DAD7BE /* ComplicationController.swift */,
 				1726B7CE28852A7D00DAD7BE /* Assets.xcassets */,
 				1726B7D328852A7D00DAD7BE /* Info.plist */,
@@ -245,6 +261,7 @@
 		DC5F142C2860EA0500857EB2 = {
 			isa = PBXGroup;
 			children = (
+				DCEC38E7288988D70018747B /* Shared */,
 				1D872D2528744F5900E1A1D8 /* Design Assets */,
 				DC5F14372860EA0500857EB2 /* Task Management Beta */,
 				DC5F144D2860EA0800857EB2 /* Task Management BetaTests */,
@@ -262,7 +279,7 @@
 				DC5F14352860EA0500857EB2 /* Task Management Beta.app */,
 				DC5F144A2860EA0800857EB2 /* Task Management BetaTests.xctest */,
 				DC5F14542860EA0800857EB2 /* Task Management BetaUITests.xctest */,
-				1726B7B728852A7B00DAD7BE /* Task Management WatchOS.app */,
+				1726B7B728852A7B00DAD7BE /* Chunkist.app */,
 				1726B7BF28852A7C00DAD7BE /* Task Management WatchOS WatchKit Extension.appex */,
 			);
 			name = Products;
@@ -273,15 +290,11 @@
 			children = (
 				DC85DD9F2884A5FB0028E600 /* Task Management Beta.entitlements */,
 				DCD0A49428737FBB0021A333 /* Task-Management-Beta-Info.plist */,
-				DCA104A1286F6B50004A7DD9 /* Helpers */,
-				DCA104A3286F6B51004A7DD9 /* Sounds */,
 				DC5F14682860EC4200857EB2 /* ViewModel */,
 				DC5F14672860EC2500857EB2 /* View */,
 				DC5F143A2860EA0500857EB2 /* ContentView.swift */,
 				DC5F14382860EA0500857EB2 /* Task_Management_BetaApp.swift */,
 				DC5F143C2860EA0800857EB2 /* Assets.xcassets */,
-				DC5F14412860EA0800857EB2 /* Persistence.swift */,
-				DC5F14432860EA0800857EB2 /* Task_Management_Beta.xcdatamodeld */,
 				DC5F143E2860EA0800857EB2 /* Preview Content */,
 			);
 			path = "Task Management Beta";
@@ -339,6 +352,7 @@
 		DC85DDA02884A5FD0028E600 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DCEC38EC288989460018747B /* CloudKit.framework */,
 				DC85DDA12884A5FD0028E600 /* CloudKit.framework */,
 			);
 			name = Frameworks;
@@ -360,6 +374,25 @@
 			path = Sounds;
 			sourceTree = "<group>";
 		};
+		DCEC38E7288988D70018747B /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				DCA104A1286F6B50004A7DD9 /* Helpers */,
+				DCA104A3286F6B51004A7DD9 /* Sounds */,
+				DC5F14412860EA0800857EB2 /* Persistence.swift */,
+				DC5F14432860EA0800857EB2 /* Task_Management_Beta.xcdatamodeld */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		DCEC38EE28898A340018747B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DCEC38EF28898A4B0018747B /* TaskViewModelWatch.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -377,7 +410,7 @@
 			);
 			name = "Task Management WatchOS";
 			productName = "Task Management WatchOS";
-			productReference = 1726B7B728852A7B00DAD7BE /* Task Management WatchOS.app */;
+			productReference = 1726B7B728852A7B00DAD7BE /* Chunkist.app */;
 			productType = "com.apple.product-type.application.watchapp2";
 		};
 		1726B7BE28852A7C00DAD7BE /* Task Management WatchOS WatchKit Extension */ = {
@@ -561,12 +594,17 @@
 			files = (
 				1726B7C928852A7C00DAD7BE /* NotificationController.swift in Sources */,
 				1726B7C728852A7C00DAD7BE /* ContentView.swift in Sources */,
+				DCB6B73F288A4AE500429CE3 /* ComplicationsView.swift in Sources */,
 				2EF07D7228893DBF00D4C6D2 /* TaskRowViewW.swift in Sources */,
+				DCB6B73D288A41FE00429CE3 /* Persistence.swift in Sources */,
 				2EF07D7A28893FF600D4C6D2 /* ParentViewWatch.swift in Sources */,
+				DCEC38F028898A4B0018747B /* TaskViewModelWatch.swift in Sources */,
 				2EF07D7028893DB400D4C6D2 /* TaskOverviewViewWatch.swift in Sources */,
 				1726B7E4288667D200DAD7BE /* SwiftUIView.swift in Sources */,
 				1726B7CD28852A7C00DAD7BE /* ComplicationController.swift in Sources */,
+				DCEC38E8288989040018747B /* Task_Management_Beta.xcdatamodeld in Sources */,
 				1726B7C528852A7C00DAD7BE /* Task_Management_BetaApp.swift in Sources */,
+				DCB6B73C288A41FB00429CE3 /* PlaySound.swift in Sources */,
 				1726B7CB28852A7C00DAD7BE /* NotificationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -640,21 +678,23 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "Task Management WatchOS WatchKit Extension/Task Management WatchOS WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Task Management WatchOS WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = JR8723F8QY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Task Management WatchOS WatchKit Extension/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Task Management WatchOS WatchKit Extension";
-				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_CFBundleDisplayName = Chunkist;
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = Task_Management_WatchOS_WatchKit_Extension.ComplicationController;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = srifajar.chunkist.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -670,21 +710,23 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "Task Management WatchOS WatchKit Extension/Task Management WatchOS WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Task Management WatchOS WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = JR8723F8QY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Task Management WatchOS WatchKit Extension/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Task Management WatchOS WatchKit Extension";
-				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_CFBundleDisplayName = Chunkist;
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = Task_Management_WatchOS_WatchKit_Extension.ComplicationController;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = srifajar.chunkist.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -702,17 +744,17 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Task Management WatchOS/Task Management WatchOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = JR8723F8QY;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = Task_Management_WatchOS_WatchKit_Extension;
-				INFOPLIST_KEY_CFBundleDisplayName = "Task Management WatchOS";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = srifajar.chunkist;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = srifajar.chunkist.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Chunkist;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -728,17 +770,17 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Task Management WatchOS/Task Management WatchOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = JR8723F8QY;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = Task_Management_WatchOS_WatchKit_Extension;
-				INFOPLIST_KEY_CFBundleDisplayName = "Task Management WatchOS";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = srifajar.chunkist;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = srifajar.chunkist.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Chunkist;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;

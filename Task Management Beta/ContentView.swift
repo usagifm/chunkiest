@@ -10,6 +10,7 @@ import CoreData
 
 struct ContentView: View {
 
+    @StateObject var delegate = NotificationDelegate()
     @AppStorage("isStart") private var isStart: Bool = false
     
     var body: some View {
@@ -30,6 +31,8 @@ struct ContentView: View {
                          Image(systemName: "chart.line.uptrend.xyaxis")
                         Text("Statistic")
                     }
+            }.onAppear {
+                UNUserNotificationCenter.current().delegate = delegate
             }
             
         } else {
@@ -52,3 +55,11 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+class NotificationDelegate:
+    NSObject,ObservableObject,UNUserNotificationCenterDelegate{
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.badge,.banner,.badge])
+    }
+}
+

@@ -9,13 +9,18 @@ import SwiftUI
 
 struct SwiftUIView: View {
     @State var taskProgress: Double = 0.4
+    
+    @StateObject var taskModel: TaskViewModelWatch = .init()
+    
+    
+    @Environment(\.self) var env
     var body: some View {
         NavigationView {
             VStack{
                 ZStack{
-                    CircularTaskProgressView(taskProgress: taskProgress)
+                    CircularTaskProgressView(taskProgress: taskModel.countTotalPercentageTaskDone)
                     VStack {
-                    Text("\(taskProgress * 100, specifier: "%.0f") %")
+                    Text("\(taskModel.countTotalPercentageTaskDone * 100, specifier: "%.0f") %")
                             .font(.system(size: 13.75))
                     Text("Task Done")
                             .font(.system(size: 13.75))
@@ -24,13 +29,19 @@ struct SwiftUIView: View {
                 }
                 .frame(width: 116, height: 116)
             }
+            .onAppear(perform: {
+                // Call when view appears
+                taskModel.loadStatiscticDatas()
+          
+            })
             .navigationTitle("Summary")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
 
 struct CircularTaskProgressView: View {
-    let taskProgress: Double
+    let taskProgress: Float
     var body: some View {
         ZStack{
             Circle()
@@ -39,7 +50,7 @@ struct CircularTaskProgressView: View {
                     lineWidth: 12.69
                 )
             Circle()
-                .trim(from: 0, to: taskProgress)
+                .trim(from: 0, to: CGFloat(taskProgress))
                 .stroke(
                     Color.blue,
                     style: StrokeStyle(

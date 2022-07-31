@@ -11,7 +11,7 @@ import CoreData
 enum segmentedEnum: String{
     case today = "Today"
     case upcoming = "Upcoming"
-    case taskDone = "Task Done"
+    case taskDone = "Done"
     case failed = "Failed"
 }
 
@@ -25,8 +25,8 @@ enum segmentedEnum: String{
 //class TaskController: ObservableObject {
 //    @Published var model = Model()
 //    @StateObject var persistenceController = PersistenceController.shared
-//    
-//    
+//
+//
 ////    var viewContext = PersistenceController.shared.container.viewContext
 //
 //    var taskItem: [Task] {
@@ -35,12 +35,12 @@ enum segmentedEnum: String{
 //            do {
 //                try taskArray = persistenceController.container.viewContext.fetch(request)
 //                print("Task sukses di ambil !")
-//                
+//
 //            }catch{
 //                // If it doesn't work
 //                print("Error getting data. \(error.localizedDescription)")
 //            }
-//            
+//
 //        }
 //    }
 //
@@ -51,7 +51,7 @@ enum segmentedEnum: String{
 ////        item.id = UUID()
 ////        model.ticket.append(item)
 ////    }
-//    
+//
 //}
 //class statisticDataStruct{
 //    var today: Int
@@ -69,7 +69,7 @@ enum segmentedEnum: String{
 //    }
 //}
 
-class TaskViewModel: ObservableObject {
+class TaskViewModelWatch: ObservableObject {
     
     
     private let persistenceController = PersistenceController.shared
@@ -114,45 +114,35 @@ class TaskViewModel: ObservableObject {
     // Mark : For adding subtask
     @Published var subTaskName: String = ""
     
-    // Array yang isinya subtask dari sebuah 
+    // Array yang isinya subtask dari sebuah
     
     
     
     // MARK : Adding task to CoreData
     
     
-    func sendNotificationDaysBefore( taskDeadline: Date, howManyDaysBefore: Int, notificationTitle: String, notificationSubtitle: String){
-        
-        let content = UNMutableNotificationContent()
-        content.title = notificationTitle
-        content.subtitle = notificationSubtitle
-        content.sound = UNNotificationSound.default
-        content.categoryIdentifier = "ACTIONS"
-        
-        let modifiedDate = Calendar.current.date(byAdding: .day, value: howManyDaysBefore, to: taskDeadline)!
-//        print(modifiedDate)
-//        print("Coookk !")
-
-        
-        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: modifiedDate)
-//        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-        
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
-        
-        let dismiss = UNNotificationAction(identifier: "DISMISS", title: "Close", options: .destructive)
-        
-        let done = UNNotificationAction(identifier: "DONE", title: "Already Done", options: .foreground)
-        
-        let category = UNNotificationCategory(identifier: "ACTIONS", actions: [done,dismiss], intentIdentifiers: [], options: [])
-        
-        UNUserNotificationCenter.current().setNotificationCategories([category])
-        
-        // choose a random identifier
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-
-        // add our notification request
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-    }
+//    func sendNotificationDaysBefore( taskDeadline: Date, howManyDaysBefore: Int, notificationTitle: String, notificationSubtitle: String){
+//
+//        let content = UNMutableNotificationContent()
+//        content.title = notificationTitle
+//        content.subtitle = notificationSubtitle
+//        content.sound = UNNotificationSound.default
+//
+//        let modifiedDate = Calendar.current.date(byAdding: .day, value: howManyDaysBefore, to: taskDeadline)!
+////        print(modifiedDate)
+////        print("Coookk !")
+//
+//
+//        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: modifiedDate)
+////        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+//
+//        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+//        // choose a random identifier
+//        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+//
+//        // add our notification request
+//        UNUserNotificationCenter.current().add(request)
+//    }
     
 //    func sendNotificationOneWeekBefore(taskTitle: String, taskDeadline: Date){
 //
@@ -177,149 +167,51 @@ class TaskViewModel: ObservableObject {
 //        UNUserNotificationCenter.current().add(request)
 //    }
 //
-    func addTask(context: NSManagedObjectContext)-> Bool{
+    
+    func completeTask(context: NSManagedObjectContext,task: Task)-> Bool{
         
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
-            if success {
-                print("All set!")
-            } else if let error = error {
-                print(error.localizedDescription)
-            }
-        }
-        
-        // Mark : Updating Existing Task Data in CoreData
-        var task: Task!
-        if let editTask = editTask {
-            task = editTask
-        }else{
-            task = Task(context: context)
-        }
-        
-        // send notif 7 days before deadline
-        
-        sendNotificationDaysBefore(taskDeadline: taskDeadline, howManyDaysBefore: -7, notificationTitle: "Slowly but surely, bit by bit !", notificationSubtitle: "You have 1 Week left for \(taskTitle), let’s do it bit by bit!")
-          
-        // send notif 1 day before deadline
-        sendNotificationDaysBefore(taskDeadline: taskDeadline, howManyDaysBefore: -1, notificationTitle: "Heads up !", notificationSubtitle: "You still have one day for \(taskTitle), lets finish it")
-          
-        
-        
-        task.id = UUID()
-        task.title = taskTitle
-        task.color = taskColor
-        task.deadline = taskDeadline
-        task.type = taskType
-        task.taskDescription = taskDescription
-        task.isCompleted = false
-        
-        
-        
-        if subtaskArrayToAdd.count != 0 {
-            for subtask in subtaskArrayToAdd{
-                subtask.task = task
-            }
+    
+//             Mark : Updating Existing Task Data in CoreData
+//            var taskUpdate: Task!
+//            //        if let editTask = editTask {
+//            //            task = editTask
+//            //        }else{
+//            //            task = Task(context: context)
+//            //        }
+//            //        hehehehe
+//            taskUpdate = task
+//            taskUpdate.isCompleted.toggle()
+
+            task.isCompleted.toggle()
+        do {
+            try context.save()
+                
+                print("Berhasil! update complete pake VM")
+                return true
             
+        }catch{
+            // If it doesn't work
+            print("Error getting data. \(error.localizedDescription)")
+//            return false
         }
+            return false
+            
+//            if let _ = try? context.save(){
+//
+//                print("Berhasil! update complete pake VM")
+//                return true
+//
+//
+//            }
+//            print("Tidak !! update complete pake VM")
+//            return false
+//
         
-        if let _ = try? context.save(){
-            
-            print("Berhasil !")
-            return true
-            
-            
-        }
         
-        return false
         
     }
-    //
-    //    func reFetchData(){
-    //
-    ////        @FetchRequest(entity: Task.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Task.deadline, ascending: false)], predicate: nil, animation: .easeInOut) var realtimeTasks: FetchedResults<Task>
-    ////
-    ////        return realtimeTasks
-    //
-    //        let request = NSFetchRequest<TaskEntity>(entityName: "Task")
-    //
-    //        let sort = NSSortDescriptor(key: "deadline", ascending: true)
-    //
-    ////       let fallbackSort = NSSortDescriptor(key: <#T##String?#>, ascending: <#T##Bool#>)
-    //
-    //        request.sortDescriptors = [sort]
-    //
-    //        do {
-    //            try tasksArray =
-    //        }
-    //
-    //    }
     
-    //    func loadExercises() {
-    //        
-    //        // Request objects that match our model
-    //        let request = NSFetchRequest<ExerciseEntity>(entityName: K.CoreData.parentEntityName)
-    //        
-    //        // SORT RULES:
-    //        // Priority or basic sort mean sort by a special attribute in CoreData Item.
-    //        // That allow us to save changes in order by user.
-    //        let sort = NSSortDescriptor(key: K.CoreData.basicSortingKey, ascending: true)
-    //        let fallbackSort = NSSortDescriptor(key: K.CoreData.fallbackSortingKey, ascending: false)
-    //        
-    //        // Applying sorting
-    //        request.sortDescriptors = [sort, fallbackSort]
-    //        
-    //        do {
-    //            // Try to load the result into the monitored array
-    //            try exercisesArray = persistenceController.container.viewContext.fetch(request)
-    //        } catch {
-    //            // If it doesn't work
-    //            print("Error getting data. \(error.localizedDescription)")
-    //        }
-    //    }
-    //
-    //
-    //    if let currentExerciseIndex = exercisesArray.firstIndex(where: { $0.id == exercise.id }) {
-    //
-    //        // Request objects that match our model
-    //        let request = NSFetchRequest<IteranceEntity>(entityName: K.CoreData.childeEntityName)
-    //
-    //        let currentExercise = exercisesArray[currentExerciseIndex]
-    //        request.predicate = NSPredicate(format: "%K == %@", "parentExercise.id" , currentExercise.id! as CVarArg)
-    //
-    //        // SORT RULES:
-    //        // Priority or basic sort mean sort by a special attribute in CoreData Item.
-    //        // That allow us to save changes in order by user.
-    //        let sort = NSSortDescriptor(key: K.CoreData.fallbackSortingKey, ascending: false)
-    //
-    //        // Applying sorting
-    //        request.sortDescriptors = [sort]
-    //
-    //        do {
-    //            // Try to load the result into the monitored array
-    //            try iterancesArray = persistenceController.container.viewContext.fetch(request)
-    //
-    //            var sumOfFetchedIterances: Int16 = 0
-    //            for iterance in iterancesArray {
-    //                sumOfFetchedIterances += iterance.number
-    //            }
-    //            currentExercise.sumOfIterances = sumOfFetchedIterances
-    //
-    //            // Computing today iterances
-    //            var sumOfToDayIterances: Int16 = 0
-    //            let calendar = Calendar.current
-    //            let todayIterances = iterancesArray.filter({calendar.isDateInToday($0.timestamp!)})
-    //            for iterance in todayIterances {
-    //                sumOfToDayIterances += iterance.number
-    //            }
-    //            currentExercise.toDayIterances = sumOfToDayIterances
-    //
-    //            saveData()
-    //
-    //        } catch {
-    //  _esn't work
-    //  _Error getting data. \(error.localizedDescription)")
-    //  __
-    //    }
-    
+   
     func loadStatiscticDatas(){
      
          countTodayTask = loadStatisticDataToday()
@@ -327,10 +219,11 @@ class TaskViewModel: ObservableObject {
          countDoneTask = loadStatisticDataDone()
          countFailedTask = loadStatisticDataFailed()
         
-        countTotalPercentageTaskDone = Float(countTodayTask + countUpcomingTask + countDoneTask + countFailedTask)
+        countTotalPercentageTaskDone = Float(countTodayTask + countUpcomingTask + countDoneTask )
+        
         print("Total percentage : \(countTotalPercentageTaskDone)")
         if countTotalPercentageTaskDone > 0 {
-            countTotalPercentageTaskDone = ( Float(countDoneTask) / countTotalPercentageTaskDone) * 100
+            countTotalPercentageTaskDone = (Float(countDoneTask) / countTotalPercentageTaskDone)
             print("Total percentage after precentaged : \(countTotalPercentageTaskDone)")
         }else {
             countTotalPercentageTaskDone = 0
@@ -609,9 +502,9 @@ class TaskViewModel: ObservableObject {
         request.sortDescriptors = [sort]
         
         //        let requestTask = NSFetchRequest<Task>(entityName: "Task")
-        //        
+        //
         ////        print(task)
-        //        
+        //
         //        requestTask.predicate = NSPredicate(format: "%K == %@", "id", task.id! as CVarArg )
         
         //        let sortTask = NSSortDescriptor(key: "order", ascending: true)
@@ -720,6 +613,55 @@ class TaskViewModel: ObservableObject {
         
         
     }
+    
+    
+    func addTaskDummy(context: NSManagedObjectContext)-> Bool{
+        
+//        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+//            if success {
+//                print("All set!")
+//            } else if let error = error {
+//                print(error.localizedDescription)
+//            }
+//        }
+        
+        // Mark : Updating Existing Task Data in CoreData
+        var task: Task!
+            task = Task(context: context)
+ 
+        task.id = UUID()
+        task.title = "Taest"
+        task.color = "Yellow"
+        task.deadline = Date()
+        task.type = "Basic"
+        task.taskDescription = "wadwa"
+        task.isCompleted = false
+        
+    
+        
+        do {
+            try context.save()
+                
+                print("Berhasil !")
+                return true
+
+            }catch{
+                // If it doesn't work
+                print("Error getting data. \(error)")
+            }
+        
+//        if let _ = try? context.save(){
+//
+//            print("Berhasil !")
+//            return true
+//
+//
+//        }
+        
+        return false
+        
+    }
+    
     
     
     func editSubtaskName(context: NSManagedObjectContext, subtask: Subtask)-> Bool{

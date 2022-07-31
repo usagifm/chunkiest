@@ -14,7 +14,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
 
     func getComplicationDescriptors(handler: @escaping ([CLKComplicationDescriptor]) -> Void) {
         let descriptors = [
-            CLKComplicationDescriptor(identifier: "complication", displayName: "SwiftUITutorial", supportedFamilies: CLKComplicationFamily.allCases)
+            CLKComplicationDescriptor(identifier: "complication", displayName: "Task Done for Chunkist", supportedFamilies: CLKComplicationFamily.allCases)
             // Multiple complication support can be added here with more descriptors
         ]
         
@@ -57,11 +57,11 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         
         switch complication.family {
         case .graphicCircular:
-            return CLKComplicationTemplateGraphicCircularStackText(line1TextProvider: CLKTextProvider(format: "Now"), line2TextProvider: CLKTextProvider(format: "Playing"))
+            return CLKComplicationTemplateGraphicCircularView(CircularComplicationViewTest(progress: 0.80))
+//        case .graphicRectangular:CLKComplicationTemplateGraphicCircularView
             
-      //  case .graphicRectangular:
-//            return CLKComplicationTemplateGraphicRectangularStandardBody(headerTextProvider: CLKTextProvider(format: "Now"), body1TextProvider: CLKTextProvider(format: "Playing"))
-        //    return CLKComplicationTemplateGraphicRectangularFullView(RectangularComplicationView(progress: 0.76))
+            ////            return CLKComplicationTemplateGraphicRectangularStandardBody(headerTextProvider: CLKTextProvider(format: "Now"), body1TextProvider: CLKTextProvider(format: "Playing"))
+//            return CLKComplicationTemplateGraphicRectangularFullView(RectangularComplicationView(progress: 0.1, song: Song(singer: "Def Ghij", title: "abc")))
         default:
             return nil
         }
